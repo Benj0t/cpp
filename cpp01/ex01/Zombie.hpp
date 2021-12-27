@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EX00
-# define EX00
+#ifndef EX01
+# define EX01
 
 # include <string>
 # include <iostream>
@@ -22,13 +22,12 @@ class Zombie
 		std::string name;
 
 	public:
-		Zombie* newZombie( std::string name );
-		void randomChump( std::string name );
 		void announce(void)
 		{
 			std::cout << '<' << name << '>'
 					  << " BraiiiiiiinnnzzzZ...\n";
 		}
+	Zombie* zombieHorde( int N, std::string name );
 	Zombie(void)
 	{
 	}
