@@ -14,47 +14,38 @@
 
 int main()
 {
+	{
+		Form cn("Le Conseil National 2019", 10, 30);
+		std::cout << cn;
+		Bureaucrat jd("Julien Delohen", 5);
+		std::cout << jd;
+		jd.signForm(cn);
+		std::cout << cn;
+		jd.signForm(cn);
+	}
+
 	try
 	{
-		Bureaucrat	bureaucrat("Michel", 2);
-		std::cout << bureaucrat;
-		bureaucrat.incrementGrade();
-		std::cout << bureaucrat;
-		bureaucrat.incrementGrade();
+		Form tooHigh("errorHigh", 0, 20);
 	}
-	catch (std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 
 	try
 	{
-		Bureaucrat	bureaucrat("Michel2", 149);
-		std::cout << bureaucrat;
-		bureaucrat.decrementGrade();
-		std::cout << bureaucrat;
-		bureaucrat.decrementGrade();
+		Form tooLow("errorLow", 10, 199);
 	}
-	catch (std::exception &e)
+	catch(std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 
-	try
 	{
-		Bureaucrat toHigh("Michel3", 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	try
-	{
-		Bureaucrat toLow("Michel4", 420);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
+		Form constitution("l'an 1999", 1, 1);
+		Bureaucrat leonid("francis", 5);
+		std::cout << leonid;
+		leonid.signForm(constitution);
 	}
 }

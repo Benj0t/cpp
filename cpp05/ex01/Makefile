@@ -6,15 +6,16 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:55:50 by bemoreau          #+#    #+#              #
-#    Updated: 2021/12/29 11:25:11 by bemoreau         ###   ########.fr        #
+#    Updated: 2021/12/29 13:54:07 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = bureau
+NAME = form
 
 FILES =	main\
-		Bureaucrat
+		Bureaucrat\
+		Form
 		
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJ = $(SRCS:.cpp=.o)
