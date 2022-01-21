@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:55:50 by bemoreau          #+#    #+#              #
-#    Updated: 2021/12/25 16:07:08 by bemoreau         ###   ########.fr        #
+#    Updated: 2022/01/15 11:19:31 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ = $(SRCS:.cpp=.o)
 
 CC = gcc++
 L_CC = clang++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 ### COLORS ###
 
@@ -40,11 +40,11 @@ all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
 			@echo "$(CYAN)Constructing executable:$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -o $(NAME) $(OBJ)
+			@$(L_CC) $(FLAGS) -o $(NAME) $(OBJ)
 
 .c.o:		${SRCS}
 			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.c=.o}
+			@$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
 clean:
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)

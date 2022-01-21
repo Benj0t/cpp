@@ -6,16 +6,16 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:55:50 by bemoreau          #+#    #+#              #
-#    Updated: 2022/01/19 14:23:14 by bemoreau         ###   ########.fr        #
+#    Updated: 2022/01/19 13:40:50 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = karenFilter
+NAME = account
 
-FILES =	main\
-		Karen
-		
+FILES =	Account\
+		tests
+
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJ = $(SRCS:.cpp=.o)
 
@@ -41,11 +41,11 @@ all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
 			@echo "$(CYAN)Constructing executable:$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -o $(NAME) $(OBJ)
+			@$(L_CC) $(FLAGS) -o $(NAME) $(OBJ)
 
 .c.o:		${SRCS}
 			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
+			@$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
 clean:
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)

@@ -13,6 +13,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <string>
 #include "main.hpp"
 
 
@@ -72,7 +73,7 @@ Contact	add_Contact(void)
 	}
 	std::cout << "Telephone:";
 	std::getline (std::cin, cont.phone);
-	while (!isNumber(cont.phone) || !cont.phone[0] || cont.phone.length() != 10)
+	while (!isNumber(cont.phone) || !cont.phone[0])
 	{
 		std::cout << "Erreur, veuillez reessayer\n";
 		std::cout << "Telephone:";
@@ -111,10 +112,20 @@ void	spaced_print(std::string str, int len)
 		std::cout << str[i++];
 }
 
+void	printIndex(Contact book[8], int nb)
+{
+	std::cout << "firstname: " << book[nb].firstname << std::endl;
+	std::cout << "lastname : " << book[nb].lastname << std::endl;
+	std::cout << "nickname : " << book[nb].nickname << std::endl;
+	std::cout << "phone    : " << book[nb].phone << std::endl;
+	std::cout << "secret   : " << book[nb].secret << std::endl;
+}
+
 void	print_book(Contact book[8], int nb)
 {
 	int len;
 	int i;
+	std::string str;
 
 	if (!nb)
 		return ;
@@ -145,6 +156,15 @@ void	print_book(Contact book[8], int nb)
 		i++;
 		std::cout << '\n';
 	}
+	std::cout << "Index du contact:";
+	std::getline (std::cin, str);
+	while (!isNumber(str) || (int)str[0] > nb + 48 || (int)str[0] <= 48 || str.length() > 1)
+	{
+		std::cout << "Erreur, veuillez reessayer\n";
+		std::cout << "Index du contact:";
+		std::getline (std::cin, str);
+	}
+	printIndex(book, (int)str[0] - 48);
 }
 
 int main()

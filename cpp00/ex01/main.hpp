@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EX01
-# define EX01
+#ifndef MAIN_H
+# define MAIN_H
 
 # include <string>
 

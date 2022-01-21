@@ -6,7 +6,7 @@
 #    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/21 13:55:50 by bemoreau          #+#    #+#              #
-#    Updated: 2021/12/29 11:25:11 by bemoreau         ###   ########.fr        #
+#    Updated: 2022/01/19 14:25:53 by bemoreau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = $(SRCS:.cpp=.o)
 
 CC = gcc++
 L_CC = clang++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 ### COLORS ###
 
@@ -45,7 +45,7 @@ $(NAME): 	$(OBJ)
 
 .c.o:		${SRCS}
 			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.c=.o}
+			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
 clean:
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)
