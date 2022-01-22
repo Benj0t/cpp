@@ -42,8 +42,8 @@ public:
             const char *what() const throw();
     };
     virtual void execute(Bureaucrat const & executor) const = 0;
-    void isExecutable(int grade);
-    void isSignable(int sign);
+    void isExecutable(int grade) const;
+    void isSignable(int sign) const ;
     void beSigned(const Bureaucrat &b) const;
     void setIsSign(bool value);
     std::string getName() const;

@@ -46,7 +46,6 @@ void    Bureaucrat::signForm(const Form &f)
     }
 }
 
-
 void    Bureaucrat::decrementGrade()
 {
     if (grade == 150)

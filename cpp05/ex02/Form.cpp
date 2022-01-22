@@ -16,7 +16,7 @@ Form::Form(const Form& f): name(f.getName()), isSigned(f.getIsSign()), execution
 {
 }
 
-void Form::isExecutable(int execGrade)
+void Form::isExecutable(int execGrade) const
 {
     if (this->isSigned == false)
         throw Form::NotSigned();
@@ -24,7 +24,7 @@ void Form::isExecutable(int execGrade)
         throw Form::GradeTooLowException();
 }
 
-void Form::isSignable(int sign)
+void Form::isSignable(int sign) const
 {
     if (isSigned == true)
         throw Form::AlreadySigned();

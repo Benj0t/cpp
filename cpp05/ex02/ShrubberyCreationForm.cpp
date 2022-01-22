@@ -3,17 +3,16 @@
 void Shrubbery::execute(Bureaucrat const & executor) const
 {
     try{
-        this->isExecutable(executor.grade);
-        // EXECUTE BLABLA
+        isExecutable(executor.getGrade());
     }
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
     }
-    
 }
 
-Shrubbery::Shrubbery(std::string target): Form("ShrubberyCreationForm", 145, 137), this->target(target);
+Shrubbery::Shrubbery(std::string trget): Form("ShrubberyCreationForm", 145, 137), target(trget)
 {
+    std::cout << "Shrubbery default constructor called !" << std::endl;
 }
 
 Shrubbery::~Shrubbery()
