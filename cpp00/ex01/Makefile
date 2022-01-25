@@ -13,7 +13,9 @@
 
 NAME = phonebook
 
-FILES =	main
+FILES =	main\
+		Contact\
+		Phonebook
 
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJ = $(SRCS:.cpp=.o)
@@ -40,11 +42,11 @@ all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
 			@echo "$(CYAN)Constructing executable:$(NOC) $@"
-			@$(L_CC) $(FLAGS) -o $(NAME) $(OBJ)
+			$(L_CC) $(FLAGS) -o $(NAME) $(OBJ)
 
 .c.o:		${SRCS}
 			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
+			@$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o${<:.cpp=.o}
 clean:
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)

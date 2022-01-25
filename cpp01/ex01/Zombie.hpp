@@ -19,23 +19,14 @@
 class Zombie
 {
 	private:
-		std::string name;
-
+		std::string _name;
 	public:
-		void announce(void)
-		{
-			std::cout << '<' << name << '>'
-					  << " BraiiiiiiinnnzzzZ...\n";
-		}
-	Zombie* zombieHorde( int N, std::string name );
-	Zombie(void)
-	{
-	}
-	~Zombie(void)
-	{
-		std::cout << '<' << name << '>'
-				  << "is dead\n";
-	}
+		void announce();		
+		Zombie* newZombie( std::string name );
+		void randomChump( std::string name );
+		Zombie* zombieHorde( int N, std::string name );
+		Zombie();
+		~Zombie();
 };
 
 

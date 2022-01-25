@@ -6,8 +6,8 @@
 class Fixed
 {
 private:
-    int point;
-    const static int bits = 8;
+    int _point;
+    const static int _bits = 8;
 public:
     Fixed(void);
     Fixed(const Fixed &fixed);

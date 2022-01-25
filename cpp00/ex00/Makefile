@@ -13,12 +13,11 @@
 
 NAME = megaphone
 
-FILES =		ex00
+FILES =		megaphone
 
 SRCS = $(addsuffix .cpp, $(FILES))
 OBJ = $(SRCS:.cpp=.o)
 
-CC = gcc++
 L_CC = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -42,9 +41,9 @@ $(NAME): 	$(OBJ)
 			@echo "$(CYAN)Constructing executable:$(NOC) $@"
 			@$(L_CC) $(FLAGS) -o $(NAME) $(OBJ)
 
-.c.o:		${SRCS}
-			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
+.c.o:		@${SRCS}
+			@echo " $(VIOLET)[$(L_CC)] $(VIOLET)[$(FLAGSsss)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
+			$(L_CC) $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
 clean:
 	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
 	@rm -f $(OBJ)

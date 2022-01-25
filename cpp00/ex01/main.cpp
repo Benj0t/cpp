@@ -10,13 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <cstring>
-#include <string>
-#include "main.hpp"
-
-
+#include "Contact.hpp"
+#include "Phonebook.hpp"
 
 bool	isNumber(std::string str)
 {
@@ -44,49 +39,63 @@ bool	isString(std::string str)
 	return (true);
 }
 
+std::string GetData(const char *type)
+{
+	std::string input;
+
+	std::cout << type;
+	std::getline (std::cin, input);
+	if (std::cin.eof())
+		return (input);
+	while (!isString(input) || !input[0])
+	{
+		std::cout << "Erreur, veuillez reessayer\n";
+		std::cout << type;
+		std::getline (std::cin, input);
+		if (std::cin.eof())
+			return (input);
+	}
+	return (input);
+}
+
+std::string GetNumberData(const char *type)
+{
+	std::string input;
+
+	std::cout << type;
+	std::getline (std::cin, input);
+	if (std::cin.eof())
+		return (input);
+	while (!isNumber(input) || !input[0])
+	{
+		std::cout << "Erreur, veuillez reessayer\n";
+		std::cout << type;
+		std::getline (std::cin, input);
+		if (std::cin.eof())
+			return (input);
+	}
+	return (input);
+}
+
 Contact	add_Contact(void)
 {
 	Contact cont;
-	std::cout << "Prenom:";
-	std::getline (std::cin, cont.firstname);
-	while (!isString(cont.firstname) || !cont.firstname[0])
-	{
-		std::cout << "Erreur, veuillez reessayer\n";
-		std::cout << "Prenom:";
-		std::getline (std::cin, cont.firstname);
-	}
-	std::cout << "Nom de famille:";
-	std::getline (std::cin, cont.lastname);
-	while (!isString(cont.lastname) || !cont.lastname[0])
-	{
-		std::cout << "Erreur, veuillez reessayer\n";
-		std::cout << "Nom de Famille:";
-		std::getline (std::cin, cont.lastname);
-	}
-	std::cout << "Surnom:";
-	std::getline (std::cin, cont.nickname);
-	while (!cont.nickname[0])
-	{
-		std::cout << "Erreur, veuillez reessayer\n";
-		std::cout << "Surnom:";
-		std::getline (std::cin, cont.nickname);
-	}
-	std::cout << "Telephone:";
-	std::getline (std::cin, cont.phone);
-	while (!isNumber(cont.phone) || !cont.phone[0])
-	{
-		std::cout << "Erreur, veuillez reessayer\n";
-		std::cout << "Telephone:";
-		std::getline (std::cin, cont.phone);
-	}
-	std::cout << "Secret:";
-	std::getline (std::cin, cont.secret);
-	while (!cont.secret[0])
-	{
-		std::cout << "Erreur, veuillez reessayer\n";
-		std::cout << "Secret:";
-		std::getline (std::cin, cont.secret);
-	}
+
+	cont.SetFirstName(GetData("Prenom: "));
+	if (cont.GetFirstName().empty())
+		return (cont);
+	cont.SetLastName(GetData("Nom de famille: "));
+	if (cont.GetLastName().empty())
+		return (cont);
+	cont.SetNickName(GetData("Surnom: "));
+	if (cont.GetNickName().empty())
+		return (cont);
+	cont.SetPhone(GetNumberData("Telephone: "));
+	if (cont.GetPhone().empty())
+		return (cont);
+	cont.SetSecret(GetData("Secret: "));
+	if (cont.GetSecret().empty())
+		return (cont);
 	return (cont);
 }
 
@@ -112,59 +121,78 @@ void	spaced_print(std::string str, int len)
 		std::cout << str[i++];
 }
 
-void	printIndex(Contact book[8], int nb)
+void	printIndex(Phonebook book, int nb)
 {
-	std::cout << "firstname: " << book[nb].firstname << std::endl;
-	std::cout << "lastname : " << book[nb].lastname << std::endl;
-	std::cout << "nickname : " << book[nb].nickname << std::endl;
-	std::cout << "phone    : " << book[nb].phone << std::endl;
-	std::cout << "secret   : " << book[nb].secret << std::endl;
+	std::cout << "firstname: " << book.GetContact(nb).GetFirstName() << std::endl;
+	std::cout << "lastname : " << book.GetContact(nb).GetLastName() << std::endl;
+	std::cout << "nickname : " << book.GetContact(nb).GetNickName() << std::endl;
+	std::cout << "phone    : " << book.GetContact(nb).GetPhone() << std::endl;
+	std::cout << "secret   : " << book.GetContact(nb).GetSecret() << std::endl;
 }
 
-void	print_book(Contact book[8], int nb)
+int	print_book(Phonebook book, int nb)
 {
 	int len;
 	int i;
 	std::string str;
+	Contact tmp;
 
 	if (!nb)
-		return ;
+	{
+		std::cout << "No contacts registered yet !" << std::endl;
+		return 0;
+	}
 	i = 0;
 	while (i < nb)
 	{
+		tmp = book.GetContact(i);
 		std::cout << "| ";
 		std::cout << i + 1;
 		std::cout << " |";
-		len = book[i].firstname.length();
+		len = tmp.GetFirstName().length();
 		if (len > 10)
-			limited_print(book[i].firstname);
+			limited_print(tmp.GetFirstName());
 		if (len < 10)
-			spaced_print(book[i].firstname, len);
+			spaced_print(tmp.GetFirstName(), len);
 		std::cout << '|';
-		len = book[i].lastname.length();
+		len = tmp.GetLastName().length();
 		if (len > 10)
-			limited_print(book[i].lastname);
+			limited_print(tmp.GetLastName());
 		if (len < 10)
-			spaced_print(book[i].lastname, len);
+			spaced_print(tmp.GetLastName(), len);
 		std::cout << '|';
-		len = book[i].nickname.length();
+		len = tmp.GetNickName().length();
 		if (len > 10)
-			limited_print(book[i].nickname);
+			limited_print(tmp.GetNickName());
 		if (len < 10)
-			spaced_print(book[i].nickname, len);
+			spaced_print(tmp.GetNickName(), len);
 		std::cout << '|';
 		i++;
 		std::cout << '\n';
 	}
 	std::cout << "Index du contact:";
 	std::getline (std::cin, str);
+	if (std::cin.eof())
+		return 1;
 	while (!isNumber(str) || (int)str[0] > nb + 48 || (int)str[0] <= 48 || str.length() > 1)
 	{
 		std::cout << "Erreur, veuillez reessayer\n";
 		std::cout << "Index du contact:";
 		std::getline (std::cin, str);
+		if (std::cin.eof())
+			return 1;
 	}
-	printIndex(book, (int)str[0] - 48);
+	printIndex(book, ((int)str[0] - '0') - 1);
+	return 0;
+}
+
+int	CheckDatas(Contact cont)
+{
+	if (cont.GetFirstName().empty() || cont.GetLastName().empty() || \
+		cont.GetFirstName().empty() || cont.GetNickName().empty() || \
+		cont.GetPhone().empty() || cont.GetSecret().empty())
+		return (1);
+	return (0);
 }
 
 int main()
@@ -177,6 +205,8 @@ int main()
 
 	std::cout << ">";
 	std::getline (std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	while (input.compare("EXIT"))
 	{
 		if (input.compare("ADD") == 0)
@@ -185,12 +215,18 @@ int main()
 				std::cout << "Phonebook deja plein\n";
 			else
 			{
-				book.contacts[nb++] = add_Contact();
+				book.SetContact(nb, add_Contact());
+				if (CheckDatas(book.GetContact(nb++)))
+					return (1);
 			}
 		}
 		if (input.compare("SEARCH") == 0)
-			print_book(book.contacts, nb);
+			if (print_book(book, nb))
+				return 1;
 		std::cout << ">";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return 1;
 	}
+	std::cout << "A la prochaine fois, camarade !" << std::endl;
 }
