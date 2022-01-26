@@ -1,42 +1,45 @@
+#include <cstdlib>
+#include <cctype>
 #include <iostream>
-#include <iomanip>
-#include <cstring>
-#include <fstream>
-#include <sstream>
+#include <cmath>
 
-//std::isprint
-
-#define ISCHAR   1
-#define ISINT    2
-#define ISFLOAT  3
-#define ISDOUBLE 4
-
-int GetDataType(std::string str)
+int main(int ac, char **av)
 {
-    if (!(str[0]))
-        return (0);
-    if (str[0] == '\'' && str[str.length() - 1] == '\'')
-        return (1);
-    else if (str[0] == '-' || str[0] == '+')
-    else if (str[str.length() - 1] == 'f')
-        return (3);
-    else if (str.find(".") != std::string::npos)
-        return (4);
-}
+	double	dbl;
+	char	c;
+	int		i;
+	float	f;
 
-
-
-int main(int argc, char **argv)
-{
-    std::string str;
-    if (argc != 2)
-    {
-        std::cerr << "Wrong number of arguments" << std::endl;
-        return (1);
-    }
-    str = std::string(argv[1]);
-    int ret = GetDataType(argv[1]);
-    if (!ret)
-        std::cerr << "Wrong argument format" << std::endl;
-
+	if (ac != 2)
+	{
+		std::cout << "Wrong number of arguments." << std::endl;
+		return (1);
+	}
+	if (std::isprint(av[1][0]) && !av[1][1])
+		dbl = static_cast<double>(av[1][0]);
+	else
+		dbl = std::atof(av[1]);
+	c = static_cast<char>(dbl);
+	i = static_cast<int>(dbl);
+	f = static_cast<float>(dbl);
+	std::cout << "char: ";
+	if (std::isnan(dbl) || std::isinf(dbl))
+		std::cout << "impossible." << std::endl;
+	else if (!std::isprint(c))
+		std::cout << "non displayable." << std::endl;
+	else
+		std::cout << static_cast<char>(dbl) << std::endl;
+	std::cout << "int: ";
+	if (std::isnan(dbl) || std::isinf(dbl) || dbl > 2147483647 || dbl < -2147483648)
+		std::cout << "impossible." << std::endl;
+	else
+		std::cout << static_cast<int>(dbl) << std::endl;
+	std::cout << "float: " << static_cast<float>(dbl);
+	if (std::isnan(dbl) || std::isinf(dbl))
+		std::cout << "f";
+	else
+		std::cout << ".0f";
+	std::cout << std::endl;
+	std::cout << "double: " << static_cast<double>(dbl) << std::endl;
+    return (0);
 }
