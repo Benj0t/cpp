@@ -2,17 +2,17 @@
 
 FragTrap::FragTrap(std::string nme): ClapTrap(nme)
 {
-    this->hitPoints = 100;
-    this->energyPoints = 100;
-    this->attackDamage = 30;
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << "FragTrap constructor called\n";
 }
 
 FragTrap::FragTrap() : ClapTrap()
 {
-    this->hitPoints = 100;
-    this->energyPoints = 100;
-    this->attackDamage = 30;
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << "FragTrap default constructor called\n";
 }
 

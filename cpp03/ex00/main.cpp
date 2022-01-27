@@ -22,6 +22,5 @@ int main(void)
 	michel.takeDamage(5);
 	michel.beRepaired(10);
 	std::cout << std::endl;
-
 	return (0);
 }

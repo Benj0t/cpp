@@ -5,10 +5,6 @@
 
 class ScavTrap: virtual public ClapTrap
 {
-protected:
-	int const	defaultHitPoints = 100;
-	int const	defaultEnergyPoints = 50;
-	int const	defaultAttackDamage = 20;
 public:
 	ScavTrap(std::string nme);
 	ScavTrap(void);

@@ -37,7 +37,7 @@ int main(void)
 	// frag2.beRepaired(10);
 	// frag2.highFivesGuys();
 
-	DiamondTrap	diamond("diamondin");
+	DiamondTrap	diamond("diamondun");
 	DiamondTrap	diamond2("diamondDeux");
 
 	diamond.attack("diamond2");
