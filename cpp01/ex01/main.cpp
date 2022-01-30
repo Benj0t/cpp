@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		std::cout << "Error\nWrong argument\n";
 		return 1;
 	}
-	horde = horde->zombieHorde(nb, argv[2]);
+	horde = zombieHorde(nb, argv[2]);
 	for (int i = 0; i < nb; i++)
 		horde[i].announce();
 	delete[] horde;

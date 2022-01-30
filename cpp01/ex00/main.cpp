@@ -14,12 +14,11 @@
 
 int main()
 {
-	Zombie	*zomb_heap;
-	Zombie	zomb_stack;
+	Zombie	*zomb;
 
-	zomb_heap = zomb_stack.newZombie("Karl");
-	zomb_heap->announce();
-	zomb_stack.randomChump("Marx");
+	zomb = newZombie("Karl");
+	zomb->announce();
+	randomChump("Marx");
 
-	delete zomb_heap;
+	delete zomb;
 }

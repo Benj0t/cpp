@@ -6,6 +6,11 @@ void Zombie::announce(void)
 			  << " BraiiiiiiinnnzzzZ...\n";
 }
 
+void Zombie::setName(std::string name)
+{
+	this->_name = name;
+}
+
 Zombie::Zombie(void)
 {
 }

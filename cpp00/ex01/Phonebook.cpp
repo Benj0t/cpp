@@ -5,7 +5,7 @@ Contact Phonebook::GetContact(int id)
     if (id < 0)
         return (this->_contacts[0]);
     if (id >= 8)
-        return (this->_contacts[7]);
+        return (this->_contacts[id]);
     return (this->_contacts[id]);
 }
 

@@ -3,10 +3,10 @@
 #include <ctime>
 #include <iomanip>
 
-int Account::_nbAccounts;
-int Account::_totalAmount;
-int Account::_totalNbDeposits;
-int Account::_totalNbWithdrawals;
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 int	Account::getNbAccounts( void )
 {
@@ -135,22 +135,22 @@ void	Account::displayStatus( void ) const
 void	Account::_displayTimestamp( void )
 {
 	time_t	now = time(0);
-	tm	*ltm = localtime(&now);
+	tm	*local = localtime(&now);
 
-	std::cout << "[" << 1900 + ltm->tm_year;
-	if (ltm->tm_mon < 10)
+	std::cout << "[" << 1900 + local->tm_year;
+	if (local->tm_mon < 10)
 		std::cout << "0";
-	std::cout << ltm->tm_mon;
-	if (ltm->tm_mday < 10)
+	std::cout << local->tm_mon;
+	if (local->tm_mday < 10)
 		std::cout << "0";
-	std::cout << ltm->tm_mday << "_";
-	if (ltm->tm_hour < 10)
+	std::cout << local->tm_mday << "_";
+	if (local->tm_hour < 10)
 		std::cout << "0";
-	std::cout << ltm->tm_hour;
-	if (ltm->tm_min < 10)
+	std::cout << local->tm_hour;
+	if (local->tm_min < 10)
 		std::cout << "0";
-	std::cout << ltm->tm_min;
-	if (ltm->tm_sec < 10)
+	std::cout << local->tm_min;
+	if (local->tm_sec < 10)
 		std::cout << "0";
-	std::cout << ltm->tm_sec << "]";
+	std::cout << local->tm_sec << "] ";
 }

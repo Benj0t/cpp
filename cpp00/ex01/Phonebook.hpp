@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK
-# define PHONEBOOK
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
 # include "Contact.hpp"
 # include <iostream>
@@ -11,7 +11,6 @@ class Phonebook
 {
     public:
         Contact GetContact(int id);
-        Contact GetAllContact(void);
         void    SetContact(int id, Contact NewContact);
         Phonebook();
         ~Phonebook();

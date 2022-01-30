@@ -150,19 +150,19 @@ int	print_book(Phonebook book, int nb)
 		std::cout << i + 1;
 		std::cout << " |";
 		len = tmp.GetFirstName().length();
-		if (len > 10)
+		if (len >= 10)
 			limited_print(tmp.GetFirstName());
 		if (len < 10)
 			spaced_print(tmp.GetFirstName(), len);
 		std::cout << '|';
 		len = tmp.GetLastName().length();
-		if (len > 10)
+		if (len >= 10)
 			limited_print(tmp.GetLastName());
 		if (len < 10)
 			spaced_print(tmp.GetLastName(), len);
 		std::cout << '|';
 		len = tmp.GetNickName().length();
-		if (len > 10)
+		if (len >= 10)
 			limited_print(tmp.GetNickName());
 		if (len < 10)
 			spaced_print(tmp.GetNickName(), len);
@@ -178,7 +178,7 @@ int	print_book(Phonebook book, int nb)
 	{
 		std::cout << "Erreur, veuillez reessayer\n";
 		std::cout << "Index du contact:";
-		std::getline (std::cin, str);
+		std::getline(std::cin, str);
 		if (std::cin.eof())
 			return 1;
 	}
@@ -197,14 +197,13 @@ int	CheckDatas(Contact cont)
 
 int main()
 {
-	int nb;
-
-	nb = 0;
+	int nb = 0;
+	int total = 0;
 	Phonebook book;
 	std::string input;
 
 	std::cout << ">";
-	std::getline (std::cin, input);
+	std::getline(std::cin, input);
 	if (std::cin.eof())
 		return 1;
 	while (input.compare("EXIT"))
@@ -212,16 +211,18 @@ int main()
 		if (input.compare("ADD") == 0)
 		{
 			if (nb > 7)
-				std::cout << "Phonebook deja plein\n";
+				nb = 0;
 			else
 			{
 				book.SetContact(nb, add_Contact());
 				if (CheckDatas(book.GetContact(nb++)))
 					return (1);
 			}
+			if (total < 8)
+				total++;
 		}
 		if (input.compare("SEARCH") == 0)
-			if (print_book(book, nb))
+			if (print_book(book, total))
 				return 1;
 		std::cout << ">";
 		std::getline(std::cin, input);
