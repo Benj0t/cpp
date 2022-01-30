@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EX01
-# define EX01
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
 # include <string>
 # include <iostream>
+# include <cstdlib>
 
 class Zombie
 {

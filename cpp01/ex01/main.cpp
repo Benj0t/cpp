@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	Zombie *horde;
+	Zombie *horde = NULL;
 	int nb;
 	if (argc != 3)
 	{

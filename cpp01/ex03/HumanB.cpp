@@ -1,7 +1,7 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name), _weapon(NULL)
+HumanB::HumanB(std::string name) : _weapon(NULL),  _name(name)
 {
     this->_name = name;
 }

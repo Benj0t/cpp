@@ -8,7 +8,7 @@ Zombie* Zombie::zombieHorde( int N, std::string name )
 	i = 0;
 	while (i < N)
 	{
-		zomb[i]._name = (name + " #" + std::to_string(i + 1));
+		zomb[i]._name = (name);
 		i++;
 	}
 	return (zomb);

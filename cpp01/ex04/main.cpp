@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <cstring>
 #include <fstream>
+#include <string>
 
 int main()
 {
@@ -21,11 +22,12 @@ int main()
 	std::string file;
 	std::string s1;
 	std::string s2;
-	int pos;
+	unsigned long pos;
 
 	std::cout << "Nom du fichier a modifier: ";
 	std::cin >> file;
-	std::fstream source(file);
+	std::ifstream source;
+	source.open(file.c_str());
 	if (!source.is_open())
 	{
 		std::cout << "Can't open file\n";
@@ -35,7 +37,9 @@ int main()
 	std::cin >> s1;
 	std::cout << "Remplacer par: ";
 	std::cin >> s2;
-	std::ofstream destination(file + ".replace");
+	file += ".replace";
+	std::ofstream destination;
+	destination.open(file.c_str());
 	if (!destination.is_open())
 	{
 		std::cout << "Can't create file\n";

@@ -1,61 +1,125 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bemoreau <bemoreau@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/06/21 13:55:50 by bemoreau          #+#    #+#              #
-#    Updated: 2022/01/19 13:42:10 by bemoreau         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# Generated with GenMake
+# Arthur-TRT - https://github.com/arthur-trt/genMake
+# genmake vv1.1.4
 
+#Compiler and Linker
+CC					:= clang
+CXX					:= c++
+ifeq ($(shell uname -s),Darwin)
+	CC				:= gcc
+	CXX				:= g++
+endif
 
-NAME = weapon
+#The Target Binary Program
+TARGET				:= violence
+TARGET_BONUS		:= violence-bonus
 
-FILES =	main\
-		Weapon\
-		HumanA\
-		HumanB
+BUILD				:= release
 
-SRCS = $(addsuffix .cpp, $(FILES))
-OBJ = $(SRCS:.cpp=.o)
+include sources.mk
 
-CC = gcc++
-L_CC = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+#The Directories, Source, Includes, Objects, Binary and Resources
+SRCDIR				:= .
+INCDIR				:= 
+BUILDDIR			:= obj
+TARGETDIR			:= .
+SRCEXT				:= cpp
+DEPEXT				:= d
+OBJEXT				:= o
 
-### COLORS ###
+OBJECTS				:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+OBJECTS_BONUS		:= $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES_BONUS:.$(SRCEXT)=.$(OBJEXT)))
 
-NOC = \033[0m
-BOLD = \033[1m
-UNDERLINE = \033[4m
-BLACK = \033[1;30m
-RED = \033[1;31m
-GREEN = \033[1;32m
-YELLOW = \033[1;33m
-BLUE = \033[1;34m
-VIOLET = \033[1;35m
-CYAN = \033[1;36m
-WHITE = \033[1;37m
+#Flags, Libraries and Includes
+cflags.release		:= -Wall -Werror -Wextra
+cflags.valgrind		:= -Wall -Werror -Wextra -DDEBUG -ggdb
+cflags.debug		:= -Wall -Werror -Wextra -DDEBUG -ggdb -fsanitize=address -fno-omit-frame-pointer
+CFLAGS				:= $(cflags.$(BUILD))
+CPPFLAGS			:= $(cflags.$(BUILD)) -std=c++98
 
-all: 		$(NAME)
+lib.release			:= 
+lib.valgrind		:= $(lib.release)
+lib.debug			:= $(lib.release) -fsanitize=address -fno-omit-frame-pointer
+LIB					:= $(lib.$(BUILD))
 
-$(NAME): 	$(OBJ)
-			@echo "$(CYAN)Constructing executable:$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -o $(NAME) $(OBJ)
+INC					:= -I$(INCDIR) -I/usr/local/include
+INCDEP				:= -I$(INCDIR)
 
-.c.o:		${SRCS}
-			@echo " $(VIOLET)[$(L_CC)] $(GREEN)[$(FLAGS)]$(NOC) $(YELLOW)in progress ...:$(NOC) $< $(RED)->$(NOC) $@"
-			@$(L_CC) -g3 $(FLAGS) -c -I$(INC_PATH) $< -o ${<:.cpp=.o}
-clean:
-	@echo "\n$(RED)Removing '.o' objects: $(NOC) $@"
-	@rm -f $(OBJ)
+# Colors
+C_RESET				:= \033[0m
+C_PENDING			:= \033[0;36m
+C_SUCCESS			:= \033[0;32m
 
-fclean: clean
-	@echo "\n$(RED)Removing executable: $(NOC) $@"
-	@rm -f $(NAME)
+# Multi platforms
+ECHO				:= echo
 
+# Escape sequences (ANSI/VT100)
+ES_ERASE			:= "\033[1A\033[2K\033[1A"
+ERASE				:= $(ECHO) $(ES_ERASE)
+
+GREP				:= grep --color=auto --exclude-dir=.git
+NORMINETTE			:= norminette `ls`
+
+# Default Make
+all: $(TARGETDIR)/$(TARGET)
+	@$(ERASE)
+	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
+	@$(ECHO) "$(C_SUCCESS)All done, compilation successful! 👌 $(C_RESET)"
+
+# Bonus rule
+bonus: CPPFLAGS += -DBONUS
+bonus: $(TARGETDIR)/$(TARGET_BONUS)
+	@$(ERASE)
+	@$(ECHO) "$(TARGET)\t\t[$(C_SUCCESS)✅$(C_RESET)]"
+	@$(ECHO) "$(C_SUCCESS)All done, compilation successful with bonus! 👌 $(C_RESET)"
+
+# Remake
 re: fclean all
 
-.PHONY: all clean re fclean
+# Clean only Objects
+clean:
+	@$(RM) -f *.d *.o
+	@$(RM) -rf $(BUILDDIR)
+
+
+# Full Clean, Objects and Binaries
+fclean: clean
+	@$(RM) -rf $(TARGET)
+
+
+# Pull in dependency info for *existing* .o files
+-include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
+
+# Link
+$(TARGETDIR)/$(TARGET): $(OBJECTS)
+	@mkdir -p $(TARGETDIR)
+	$(CXX) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+# Link Bonus
+$(TARGETDIR)/$(TARGET_BONUS): $(OBJECTS_BONUS)
+	@mkdir -p $(TARGETDIR)
+	$(CXX) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+$(BUILDIR):
+	@mkdir -p $@
+
+# Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	@$(ECHO) "$(TARGET)\t\t[$(C_PENDING)⏳$(C_RESET)]"
+	$(CXX) $(CPPFLAGS) $(INC) -c -o $@ $<
+	@$(CXX) $(CPPFLAGS) $(INCDEP) -MM $(SRCDIR)/$*.$(SRCEXT) > $(BUILDDIR)/$*.$(DEPEXT)
+	@$(ERASE)
+	@$(ERASE)
+	@cp -f $(BUILDDIR)/$*.$(DEPEXT) $(BUILDDIR)/$*.$(DEPEXT).tmp
+	@sed -e 's|.*:|$(BUILDDIR)/$*.$(OBJEXT):|' < $(BUILDDIR)/$*.$(DEPEXT).tmp > $(BUILDDIR)/$*.$(DEPEXT)
+	@sed -e 's/.*://' -e 's/\\$$//' < $(BUILDDIR)/$*.$(DEPEXT).tmp | fmt -1 | sed -e 's/^ *//' -e 's/$$/:/' >> $(BUILDDIR)/$*.$(DEPEXT)
+	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
+
+
+
+norm:
+	@$(NORMINETTE) | $(GREP) -v "Not a valid file" | $(GREP) "Error\|Warning" -B 1 || true
+
+# Non-File Targets
+.PHONY: all re clean fclean norm bonus
