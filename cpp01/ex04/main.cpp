@@ -25,7 +25,7 @@ int main()
 	unsigned long pos;
 
 	std::cout << "Nom du fichier a modifier: ";
-	std::cin >> file;
+	std::getline (std::cin, file);
 	std::ifstream source;
 	source.open(file.c_str());
 	if (!source.is_open())
@@ -34,9 +34,9 @@ int main()
 		return 1;
 	}
 	std::cout << "String a remplacer: ";
-	std::cin >> s1;
+	std::getline (std::cin, s1);
 	std::cout << "Remplacer par: ";
-	std::cin >> s2;
+	std::getline (std::cin, s2);
 	file += ".replace";
 	std::ofstream destination;
 	destination.open(file.c_str());
