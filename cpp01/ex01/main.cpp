@@ -12,23 +12,12 @@
 
 #include "Zombie.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
 	Zombie *horde = NULL;
-	int nb;
-	if (argc != 3)
-	{
-		std::cout << "Error\nWrong number of arguments\n";
-		return 1;
-	}
-	nb = std::atoi(argv[1]);
-	if (nb <= 0)
-	{
-		std::cout << "Error\nWrong argument\n";
-		return 1;
-	}
-	horde = zombieHorde(nb, argv[2]);
-	for (int i = 0; i < nb; i++)
+	int number = 10;
+	horde = zombieHorde(number, "Xavier");
+	for (int i = 0; i < number; i++)
 		horde[i].announce();
 	delete[] horde;
 }

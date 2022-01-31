@@ -1,5 +1,5 @@
-#ifndef ZOMBIE
-# define ZOMBIE
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
 # include <string>
 # include <iostream>
