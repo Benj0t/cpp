@@ -20,13 +20,13 @@ Fixed::Fixed(const float nb)
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
+	//std::cout << "getRawBits member function called\n";
 	return (this->_point);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called\n";
+	//std::cout << "setRawBits member function called\n";
 	this->_point = raw;
 }
 
@@ -38,7 +38,7 @@ Fixed::Fixed(const Fixed& fxed)
 
 Fixed& Fixed::operator=(const Fixed& fxed)
 {
-	std::cout << "Assignation operator called\n";
+	std::cout << "Copy assignment operator called\n";
 	if (this == &fxed)
 		return *this;
 	this->_point = fxed.getRawBits();

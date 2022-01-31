@@ -9,14 +9,12 @@ private:
     int _point;
     const static int _bits = 8;
 public:
-    Fixed(void);
-    Fixed(const Fixed &fixed);
-    Fixed& operator= (const Fixed& fixed);
-    int getRawBits(void);
+    int getRawBits(void) const;
     void	setRawBits(int const raw);
+    Fixed(const Fixed &fixed);
+    Fixed(void);
     ~Fixed();
+    Fixed& operator= (const Fixed& fixed);
 };
-
-
 
 #endif

@@ -22,10 +22,10 @@ void DiamondTrap::attack(std::string const & target)
 
 DiamondTrap::DiamondTrap(std::string nme) : ClapTrap(nme + "_clap_name"), ScavTrap(), FragTrap(), _name(nme)
 {
-    this->_hitPoints = FragTrap::_hitPoints;
-    this->_attackDamage = FragTrap::_attackDamage;
-    this->_energyPoints = ScavTrap::_energyPoints;
-    std::cout << "DiamondTrap default constructor called\n" << _hitPoints << " " << _energyPoints << " " << _attackDamage << " ";
+    //this->_hitPoints = FragTrap::_hitPoints;
+    //this->_energyPoints = ScavTrap::_energyPoints;
+    //this->_attackDamage = FragTrap::_attackDamage;
+    std::cerr << "DiamondTrap default constructor called\n" << _hitPoints << " " << _energyPoints << " " << _attackDamage << " ";
 
     std::cout << "DiamondTrap constructor called\n";
 }

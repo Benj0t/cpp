@@ -8,18 +8,19 @@ Fixed::Fixed(void) : _point(0)
 
 Fixed::Fixed(const Fixed &fixed)
 {
+
 	std::cout << "Copy constructor called\n";
 	*this = fixed;
 }
 
 Fixed& Fixed::operator= (const Fixed& fixed)
 {
-	std::cout << "Assignation operator called\n";
-	this->_point = fixed._point;
+	std::cout << "Copy assignment operator called\n";
+	this->_point = fixed.getRawBits();
 	return *this;
 }
 
-int Fixed::getRawBits(void)
+int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called\n";
 	return (this->_point);

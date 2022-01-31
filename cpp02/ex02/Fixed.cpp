@@ -1,7 +1,7 @@
 
 #include "Fixed.hpp"
 
-Fixed::Fixed(void) : point(0)
+Fixed::Fixed(void) : _point(0)
 {
 	std::cout << "Default constructor called\n";
 }
@@ -9,50 +9,50 @@ Fixed::Fixed(void) : point(0)
 Fixed::Fixed(const int nb)
 {
 	std::cout << "Int constructor called\n";
-	this->point = nb << this->bits;
+	this->_point = nb << this->_bits;
 }
 
 Fixed::Fixed(const float nb)
 {
 	std::cout << "Float constructor called\n";
-	this->point = (int)(roundf(nb * (1 << this->bits)));
+	this->_point = (int)(roundf(nb * (1 << this->_bits)));
 }
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
-	return (this->point);
+	//std::cout << "getRawBits member function called\n";
+	return (this->_point);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called\n";
-	this->point = raw;
+	//std::cout << "setRawBits member function called\n";
+	this->_point = raw;
 }
 
 Fixed::Fixed(const Fixed& fxed)
 {
-	std::cout << "Copy constructor called\n";
-	this->point = fxed.getRawBits();
+	//std::cout << "Copy constructor called\n";
+	this->_point = fxed.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& fxed)
 {
-	std::cout << "Assignation operator called\n";
+	//std::cout << "Assignation operator called\n";
 	if (this == &fxed)
 		return *this;
-	this->point = fxed.getRawBits();
+	this->_point = fxed.getRawBits();
 	return *this;
 }
 
 int Fixed::toInt(void) const
 {
-	return ((int)(this->point >> this->bits));
+	return ((int)(this->_point >> this->_bits));
 }
 
 float Fixed::toFloat(void) const
 {
-	return ((float)this->point / (float)(1 << this->bits));
+	return ((float)this->_point / (float)(1 << this->_bits));
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
@@ -63,7 +63,7 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	//std::cout << "Destructor called\n";
 }
 
 bool Fixed::operator<(Fixed const &fxed) const
@@ -91,6 +91,8 @@ bool Fixed::operator!=(Fixed const &fxed) const
 	return this->getRawBits() != fxed.getRawBits();
 }
 
+//pas giga sur !
+
 Fixed Fixed::operator+(Fixed const &fxed) const
 {
 	Fixed result(*this);
@@ -106,29 +108,29 @@ Fixed Fixed::operator-(Fixed const &fxed) const
 Fixed Fixed::operator*(Fixed const &fxed) const
 {
 	Fixed result(*this);
-	result.setRawBits(((long)this->getRawBits() * (long)fxed.getRawBits()) / (1 << this->bits));
+	result.setRawBits(((long)this->getRawBits() * (long)fxed.getRawBits()) / (1 << this->_bits));
 	return result;
 }
 Fixed Fixed::operator/(Fixed const &fxed) const
 {
 	Fixed result(*this);
-	if (fxed.point == 0)
+	if (fxed._point == 0)
 	{
 		std::cout << "Cant divide by zero\n";
 		return result;
 	}
-	result.setRawBits(((long)this->getRawBits() * (1 << this->bits)) / (long)fxed.getRawBits());
+	result.setRawBits(((long)this->getRawBits() * (1 << this->_bits)) / (long)fxed.getRawBits());
 	return result;
 }
 
 Fixed &Fixed::operator++()
 {
-	this->point++;
+	this->_point++;
 	return (*this);
 }
 Fixed &Fixed::operator--()
 {
-	this->point--;
+	this->_point--;
 	return (*this);
 }
 Fixed Fixed::operator++(int)

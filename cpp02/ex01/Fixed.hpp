@@ -12,7 +12,7 @@ private:
 public:
     Fixed(void);
     Fixed(const Fixed &fixed);
-    Fixed& operator= (const Fixed& fixed);
+    Fixed& operator=(const Fixed& fixed);
     Fixed(const int nb);
     Fixed(const float nb);
     float toFloat(void) const;
