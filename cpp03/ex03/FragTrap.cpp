@@ -3,8 +3,8 @@
 FragTrap::FragTrap(std::string nme): ClapTrap(nme)
 {
     this->_hitPoints = 100;
-    this->_energyPoints = 50;
-    this->_attackDamage = 20;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << "FragTrap constructor called\n";
 }
 
