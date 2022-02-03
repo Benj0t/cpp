@@ -18,11 +18,25 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 void ScavTrap::attack(std::string const & target)
 {
+    if (_energyPoints > 0)
+        _energyPoints -= 1;
+    else
+    {
+        std::cout << "ScavTrap " << this->_name << " has no more energy points\n";
+        return ;
+    }
     std::cout << "ScavTrap " << this->_name << " attack "<< target << " , causing " << this->_attackDamage << "points of damage!\n";
 }
 
 void ScavTrap::guardGate()
 {
+    if (_energyPoints > 0)
+        _energyPoints -= 1;
+    else
+    {
+        std::cout << "ScavTrap " << this->_name << " has no more energy points\n";
+        return ;
+    }
     std::cout << "ScavTrap " << this->_name << " entered in Gate Keeper mode\n";
 }
 

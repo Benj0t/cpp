@@ -19,7 +19,23 @@ int main(void)
 	ClapTrap	michel("Michel");
 
 	toto.attack("a spider");
-	michel.takeDamage(5);
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
+	toto.attack("a spider");
 	michel.beRepaired(10);
 	std::cout << std::endl;
 	return (0);

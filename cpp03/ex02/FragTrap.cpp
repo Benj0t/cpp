@@ -18,6 +18,13 @@ FragTrap::FragTrap() : ClapTrap()
 
 void    FragTrap::highFivesGuys(void)
 {
+    if (_energyPoints > 0)
+        _energyPoints -= 1;
+    else
+    {
+        std::cout << "FragTrap " << this->_name << " has no more energy points" << std::endl;
+        return ;
+    }
     std::cout <<"Hey guys ! Give me five !\n";
 }
 
