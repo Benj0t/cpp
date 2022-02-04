@@ -3,18 +3,18 @@
 
 Fixed::Fixed(void) : _point(0)
 {
-	std::cout << "Default constructor called\n";
+	//std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const int nb)
 {
-	std::cout << "Int constructor called\n";
+	//std::cout << "Int constructor called\n";
 	this->_point = nb << this->_bits;
 }
 
 Fixed::Fixed(const float nb)
 {
-	std::cout << "Float constructor called\n";
+	//std::cout << "Float constructor called\n";
 	this->_point = (int)(roundf(nb * (1 << this->_bits)));
 }
 
@@ -125,12 +125,12 @@ Fixed Fixed::operator/(Fixed const &fxed) const
 
 Fixed &Fixed::operator++()
 {
-	this->_point++;
+	this->_point += 1;
 	return (*this);
 }
 Fixed &Fixed::operator--()
 {
-	this->_point--;
+	this->_point -= 1;
 	return (*this);
 }
 Fixed Fixed::operator++(int)
