@@ -23,6 +23,10 @@ public:
 	int getAttackDamage(void);
 	int getHitPoints(void);
 	int getEnergyPoints(void);
+	virtual void setAttack(void) = 0;
+	virtual void setHitPoints(void) = 0;
+	virtual void setEnergy(void) = 0;
+
 	std::string getName(void);
 };
 # include "ScavTrap.hpp"

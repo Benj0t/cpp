@@ -14,6 +14,9 @@ public:
     void attack(std::string const & target);
     DiamondTrap(std::string nme);
     ~DiamondTrap();
+	void    setAttack(void);
+	void    setHitPoints(void);
+	void    setEnergy(void);
     void    whoAmI(void);
 };
 

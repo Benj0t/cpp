@@ -11,6 +11,9 @@ public:
 	~ScavTrap();
 	void attack(std::string const & target);
 	void guardGate();
+	void setAttack(void);
+	void setHitPoints(void);
+	void setEnergy(void);
 };
 
 #endif

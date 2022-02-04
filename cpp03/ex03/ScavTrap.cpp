@@ -2,18 +2,34 @@
 
 ScavTrap::ScavTrap(std::string nme): ClapTrap(nme)
 {
-    this->_hitPoints = 100;
-    this->_energyPoints = 50;
-    this->_attackDamage = 20;
+    setHitPoints();
+    setEnergy();
+    setAttack();
     std::cout << "ScavTrap constructor called\n";
 }
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    this->_hitPoints = 100;
-    this->_energyPoints = 50;
-    this->_attackDamage = 20;
+    setHitPoints();
+    setEnergy();
+    setAttack();
     std::cout << "ScavTrap default constructor called\n";
+}
+
+void    ScavTrap::setEnergy()
+{
+    this->_energyPoints = 50;
+}
+
+void    ScavTrap::setAttack()
+{
+    this->_attackDamage = 20;
+}
+
+
+void    ScavTrap::setHitPoints()
+{
+    this->_hitPoints = 100;
 }
 
 void ScavTrap::attack(std::string const & target)

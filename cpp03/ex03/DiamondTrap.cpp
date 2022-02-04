@@ -1,11 +1,22 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap("Default_clap_name")//, FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(): ClapTrap("Default_clap_name"), FragTrap(), ScavTrap()
 {
-    this->_hitPoints = FragTrap::_hitPoints;
-    this->_energyPoints = ScavTrap::_energyPoints;
-    this->_attackDamage = FragTrap::_attackDamage;
+    setHitPoints();
+    setEnergy();
+    setAttack();
     std::cout << "DiamondTrap default constructor called\n";
+    std::cerr << "DiamondTrap default constructor called\n" << this->_hitPoints << " " << this->_energyPoints << " " << this->_attackDamage << " ";
+
+}
+
+DiamondTrap::DiamondTrap(std::string nme) : ClapTrap(nme + "_clap_name"), _name(nme), ScavTrap(), FragTrap()
+{
+    setHitPoints();
+    setEnergy();
+    setAttack();
+    std::cerr << "DiamondTrap default constructor called\n" << this->_hitPoints << " " << this->_energyPoints << " " << this->_attackDamage << " ";
+    std::cout << "DiamondTrap constructor called\n";
 }
 
 void DiamondTrap::attack(std::string const & target)
@@ -20,14 +31,19 @@ void DiamondTrap::attack(std::string const & target)
     std::cout << "DiamondTrap " << this->_name << " attack "<< target << ", causing " << this->_attackDamage << "points of damage!\n";
 }
 
-DiamondTrap::DiamondTrap(std::string nme) : ClapTrap(nme + "_clap_name"), _name(nme)//, ScavTrap(), FragTrap()
+void    DiamondTrap::setAttack()
 {
-    this->_hitPoints = FragTrap::_hitPoints;
-    this->_energyPoints = ScavTrap::_energyPoints;
-    this->_attackDamage = FragTrap::_attackDamage;
-    std::cerr << "DiamondTrap default constructor called\n" << this->_hitPoints << " " << this->_energyPoints << " " << this->_attackDamage << " ";
-    std::cout << "DiamondTrap constructor called\n";
+    FragTrap::setAttack();
 }
+void    DiamondTrap::setEnergy()
+{
+    ScavTrap::setEnergy();
+}
+void    DiamondTrap::setHitPoints()
+{
+    FragTrap::setHitPoints();
+}
+
 
 void    DiamondTrap::whoAmI(void)
 {

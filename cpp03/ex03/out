@@ -1,0 +1,22 @@
+Constructor called
+FragTrap default constructor called
+ScavTrap default constructor called
+DiamondTrap constructor called
+Constructor called
+FragTrap default constructor called
+ScavTrap default constructor called
+DiamondTrap constructor called
+DiamondTrap diamondun attack diamond2, causing 20points of damage!
+ClapTrap diamondDeux_clap_name takes 20 points of damage, 80 hit points left
+ClapTrap diamondDeux_clap_name heals 10 hit points, now has 90 hit points
+Hey guys ! Give me five !
+ScavTrap diamondDeux_clap_name entered in Gate Keeper mode
+Hey guys ! My name is diamondDeux and my ClapTrap name is  diamondDeux_clap_name !
+DiamonTrap destructor called
+ScavTrap destructor called
+FragTrap destructor called
+Destructor called
+DiamonTrap destructor called
+ScavTrap destructor called
+FragTrap destructor called
+Destructor called
