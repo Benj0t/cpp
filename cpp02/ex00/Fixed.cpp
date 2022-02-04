@@ -1,4 +1,3 @@
-
 #include "Fixed.hpp"
 
 Fixed::Fixed(void) : _point(0)
@@ -13,7 +12,12 @@ Fixed::Fixed(const Fixed &fixed)
 	*this = fixed;
 }
 
-Fixed& Fixed::operator= (const Fixed& fixed)
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called\n";
+}
+
+Fixed& Fixed::operator=(const Fixed& fixed)
 {
 	std::cout << "Copy assignment operator called\n";
 	this->_point = fixed.getRawBits();
@@ -30,9 +34,4 @@ void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called\n";
 	this->_point = raw;
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called\n";
 }

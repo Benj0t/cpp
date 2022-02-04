@@ -17,7 +17,8 @@ void	convert_char(double data)
 
 void	convert_int(double data)
 {
-	int i = static_cast<int>(data);
+	int i = static_cast<int>(data);\
+	
 	std::cout << "int: ";
 	if (std::isnan(data) || std::isinf(data) || data > 2147483647 || data < -2147483648)
 		std::cout << "impossible." << std::endl;
@@ -64,5 +65,4 @@ int main(int ac, char **av)
 	convert_float(dbl, av[1]);
 	convert_int(dbl);
 	print_double(dbl, av[1]);
-
 }
