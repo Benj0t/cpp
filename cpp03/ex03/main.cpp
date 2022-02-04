@@ -14,28 +14,28 @@
 
 int main(void)
 {
-	// ClapTrap	clap("Clapin");
-	// ClapTrap	clap2("clapDeux");
+	ClapTrap	clap("Clapin");
+	ClapTrap	clap2("clapDeux");
 
-	// clap.attack("clap2");
-	// clap2.takeDamage(clap.getAttackDamage());
-	// clap2.beRepaired(10);
+	clap.attack("clap2");
+	clap2.takeDamage(clap.getAttackDamage());
+	clap2.beRepaired(10);
 
-	// ScavTrap	scav("Scavin");
-	// ScavTrap	scav2("scavDeux");
+	ScavTrap	scav("Scavin");
+	ScavTrap	scav2("scavDeux");
 
-	// scav.attack("scav2");
-	// scav2.takeDamage(scav.getAttackDamage());
-	// scav2.guardGate();
-	// scav.beRepaired(10);
+	scav.attack("scav2");
+	scav2.takeDamage(scav.getAttackDamage());
+	scav2.guardGate();
+	scav.beRepaired(10);
 
-	// FragTrap	frag("Fragin");
-	// FragTrap	frag2("fragDeux");
+	FragTrap	frag("Fragin");
+	FragTrap	frag2("fragDeux");
 
-	// frag.attack("frag2");
-	// frag2.takeDamage(frag.getAttackDamage());
-	// frag2.beRepaired(10);
-	// frag2.highFivesGuys();
+	frag.attack("frag2");
+	frag2.takeDamage(frag.getAttackDamage());
+	frag2.beRepaired(10);
+	frag2.highFivesGuys();
 
 	DiamondTrap	diamond("diamondun");
 	DiamondTrap	diamond2("diamondDeux");

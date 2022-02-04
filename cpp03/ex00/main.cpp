@@ -14,29 +14,28 @@
 
 int main(void)
 {
-	ClapTrap	toto;
+	ClapTrap	toto("toto");
+	ClapTrap	michel(toto);
+	ClapTrap	Didier;
+	Didier = michel;
 
-	ClapTrap	michel("Michel");
 
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	toto.attack("a spider");
-	michel.beRepaired(10);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.takeDamage(1);
+	toto.beRepaired(10);
 	std::cout << std::endl;
 	return (0);
 }

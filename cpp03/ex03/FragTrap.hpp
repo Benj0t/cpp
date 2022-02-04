@@ -8,11 +8,13 @@ class FragTrap: virtual public ClapTrap
 public:
     void    highFivesGuys(void);
     FragTrap(std::string nme);
-    FragTrap(/* args */);
+	FragTrap(const FragTrap &frag);
+    FragTrap();
     ~FragTrap();
 	void setAttack(void);
 	void setHitPoints(void);
 	void setEnergy(void);
+	FragTrap& operator=(const FragTrap& scav);
 };
 
 

@@ -16,9 +16,15 @@ FragTrap::FragTrap() : ClapTrap()
     std::cout << "FragTrap default constructor called\n";
 }
 
+FragTrap::FragTrap(const FragTrap &frag)
+{
+    std::cout << "FragTrap Copy constructor called" << std::endl;
+    *this = frag;
+}
+
 void    FragTrap::highFivesGuys(void)
 {
-    if (_energyPoints > 0)
+    if (_energyPoints > 0 && _hitPoints != 0)
         _energyPoints -= 1;
     else
     {
@@ -26,6 +32,16 @@ void    FragTrap::highFivesGuys(void)
         return ;
     }
     std::cout <<"Hey guys ! Give me five !\n";
+}
+
+FragTrap& FragTrap::operator=(const FragTrap& frag)
+{
+    std::cout << "FragTrap Copy assignment operator called\n";
+    this->_name = frag.getName();
+    this->_attackDamage = frag.getAttackDamage();
+    this->_energyPoints = frag.getEnergyPoints();
+    this->_hitPoints = frag.getHitPoints();
+    return *this;
 }
 
 FragTrap::~FragTrap()
