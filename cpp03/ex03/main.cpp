@@ -14,31 +14,34 @@
 
 int main(void)
 {
-	ClapTrap	clap("Clapin");
-	ClapTrap	clap2("clapDeux");
+	ClapTrap	clap("Clap1");
+	ClapTrap	clap2("clap2");
 
 	clap.attack("clap2");
 	clap2.takeDamage(clap.getAttackDamage());
 	clap2.beRepaired(10);
 
-	ScavTrap	scav("Scavin");
-	ScavTrap	scav2("scavDeux");
+	std::cout << std::endl << std::endl;
+	ScavTrap	scav("Scav1");
+	ScavTrap	scav2("scav2");
 
 	scav.attack("scav2");
 	scav2.takeDamage(scav.getAttackDamage());
 	scav2.guardGate();
 	scav.beRepaired(10);
 
-	FragTrap	frag("Fragin");
-	FragTrap	frag2("fragDeux");
+	std::cout << std::endl << std::endl;
+	FragTrap	frag("Frag1");
+	FragTrap	frag2("frag2");
 
 	frag.attack("frag2");
 	frag2.takeDamage(frag.getAttackDamage());
 	frag2.beRepaired(10);
 	frag2.highFivesGuys();
 
-	DiamondTrap	diamond("diamondun");
-	DiamondTrap	diamond2("diamondDeux");
+	std::cout << std::endl << std::endl;
+	DiamondTrap	diamond("diamond1");
+	DiamondTrap	diamond2("diamond2");
 
 	diamond.attack("diamond2");
 	diamond2.takeDamage(diamond.getAttackDamage());

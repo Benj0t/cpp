@@ -19,23 +19,27 @@ int main(void)
 	ClapTrap	Didier;
 	Didier = michel;
 
-
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.takeDamage(1);
-	toto.beRepaired(10);
+	toto.takeDamage(2);
+	toto.takeDamage(2);
+	toto.takeDamage(2);
+	toto.takeDamage(2);
+	toto.beRepaired(2);
+	toto.takeDamage(2);
+	toto.takeDamage(2);
+	toto.takeDamage(2);
+	toto.beRepaired(2);
 	std::cout << std::endl;
+	ClapTrap	titi("titi");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
+	titi.attack("a spider");
 	return (0);
 }

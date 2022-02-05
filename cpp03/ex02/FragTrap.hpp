@@ -10,6 +10,7 @@ public:
 	FragTrap(const FragTrap &frag);
 	FragTrap(std::string nme);
     FragTrap();
+	void attack(std::string const & target);
 	FragTrap& operator=(const FragTrap& scav);
     ~FragTrap();
 };

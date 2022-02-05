@@ -11,6 +11,7 @@ public:
 	FragTrap(const FragTrap &frag);
     FragTrap();
     ~FragTrap();
+	void attack(std::string const & target);
 	void setAttack(void);
 	void setHitPoints(void);
 	void setEnergy(void);

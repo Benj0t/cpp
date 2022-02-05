@@ -1,13 +1,11 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap("Default_clap_name"), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(): ClapTrap("Default_clap_name"), FragTrap(), ScavTrap(), _name("Default")
 {
     setHitPoints();
     setEnergy();
     setAttack();
     std::cout << "DiamondTrap default constructor called\n";
-    std::cerr << "DiamondTrap default constructor called\n" << this->_hitPoints << " " << this->_energyPoints << " " << this->_attackDamage << " ";
-
 }
 
 DiamondTrap::DiamondTrap(std::string nme) : ClapTrap(nme + "_clap_name"), FragTrap(), ScavTrap(), _name(nme)
@@ -15,7 +13,6 @@ DiamondTrap::DiamondTrap(std::string nme) : ClapTrap(nme + "_clap_name"), FragTr
     setHitPoints();
     setEnergy();
     setAttack();
-    std::cerr << "DiamondTrap default constructor called\n" << this->_hitPoints << " " << this->_energyPoints << " " << this->_attackDamage << " ";
     std::cout << "DiamondTrap constructor called\n";
 }
 
@@ -27,15 +24,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &frag)
 
 void DiamondTrap::attack(std::string const & target)
 {
-    if (_energyPoints > 0 && _hitPoints != 0)
-        _energyPoints -= 1;
-    else
-    {
-        std::cout << "DiamondTrap " << this->_name << " has no more energy points or " << this->_name << " is dead" << std::endl;
-
-        return ;
-    }
-    std::cout << "DiamondTrap " << this->_name << " attack "<< target << ", causing " << this->_attackDamage << "points of damage!\n";
+    this->ScavTrap::attack(target);
 }
 
 void    DiamondTrap::setAttack()
@@ -53,7 +42,14 @@ void    DiamondTrap::setHitPoints()
 
 void    DiamondTrap::whoAmI(void)
 {
-    std::cout <<"Hey guys ! My name is " << this->_name <<" and my ClapTrap name is  "<< ClapTrap::_name << " !\n";
+    if (_energyPoints > 0 && _hitPoints != 0)
+        _energyPoints -= 1;
+    else
+    {
+        std::cout << "DiamondTrap " << this->_name << " has no more energy points or " << this->_name << " is dead" << std::endl;
+        return ;
+    }
+    std::cout <<"DiamondTrap Hey guys ! My name is " << this->_name <<" and my ClapTrap name is  "<< ClapTrap::_name << " !\n";
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diam)
@@ -68,5 +64,5 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diam)
 
 DiamondTrap::~DiamondTrap()
 {
-    std::cout << "DiamonTrap destructor called\n";
+    std::cout << "DiamondTrap destructor called\n";
 }
