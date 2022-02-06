@@ -2,8 +2,26 @@
 
 Dog::Dog(): Animal()
 {
-    this->type = "Dog";
+    this->_type = "Dog";
     std::cout << "Dog default constructor called\n";
+}
+
+Dog::Dog(std::string type) : Animal(type)
+{
+    std::cout << "Dog constructor called\n";
+}
+
+Dog& Dog::operator=(const Dog& ref)
+{
+    std::cout << "Dog assignation copy constructor called" << std::endl;
+    this->_type = ref.getType();
+    return *this;
+}
+
+Dog::Dog(const Dog &ref)
+{
+    std::cout << "Dog copy constructor called" << std::endl;
+    *this = ref;
 }
 
 void Dog::makeSound(void) const

@@ -2,8 +2,26 @@
 
 Cat::Cat(): Animal()
 {
-    this->type = "Cat";
+    this->_type = "Cat";
     std::cout << "Cat default constructor called\n";
+}
+
+Cat::Cat(std::string type) : Animal(type)
+{
+    std::cout << "Cat constructor called\n";
+}
+
+Cat& Cat::operator=(const Cat& ref)
+{
+    std::cout << "Cat assignation copy constructor called" << std::endl;
+    this->_type = ref.getType();
+    return *this;
+}
+
+Cat::Cat(const Cat &ref)
+{
+    std::cout << "Cat copy constructor called" << std::endl;
+    *this = ref;
 }
 
 void Cat::makeSound(void) const
