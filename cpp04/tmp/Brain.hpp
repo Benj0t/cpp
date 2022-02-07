@@ -9,12 +9,11 @@
 class Brain
 {
 private:
-    std::string _ideas[100];
+    std::string ideas[100];
 public:
     void    print_idea(int id);
     Brain();
     Brain(const Brain &src);
-    Brain& operator=(const Brain& ref);
     ~Brain();
 };
 #endif

@@ -9,14 +9,11 @@
 class WrongAnimal
 {
 protected:
-    std::string _type;
+    std::string type;
 public:
     std::string getType() const;
     virtual void makeSound(void) const;
     WrongAnimal();
-    WrongAnimal(std::string type);
-    WrongAnimal(const WrongAnimal &ref);
-    WrongAnimal& operator=(const WrongAnimal& ref);
     ~WrongAnimal();
 };
 

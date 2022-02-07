@@ -7,24 +7,10 @@ Brain::Brain(const Brain &src)
     i = 0;
     while (i < 100)
     {
-        this->_ideas[i] = src._ideas[i];
+        this->ideas[i] = src.ideas[i];
         i++;
     }
     std::cout << "Brain's copy constructor called\n";
-}
-
-Brain& Brain::operator=(const Brain& ref)
-{
-    int i;
-
-    i = 0;
-    while (i < 100)
-    {
-        this->_ideas[i] = ref._ideas[i];
-        i++;
-    }
-    std::cout << "Brain assignation copy constructor called" << std::endl;
-    return *this;
 }
 
 std::string toString(int i) 
@@ -42,7 +28,7 @@ Brain::Brain()
     i = 0;
     while (i < 100)
     {
-        this->_ideas[i] = "idea number " + toString(i + 1);
+        this->ideas[i] = "idea number " + toString(i + 1);
         i++;
     }
     std::cout << "Default Brain constructor called\n";
@@ -52,8 +38,11 @@ void    Brain::print_idea(int id)
 {
     id--;
     if (id < 0 || id >= 100)
+    {
+        std::cout << "Idea index out of range (1 - 100)" << std::endl;
         return;
-    std::cout << this->_ideas[id] << std::endl;
+    }
+    std::cout << this->ideas[id] << std::endl;
 }
 
 Brain::~Brain()

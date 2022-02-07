@@ -3,17 +3,31 @@
 
 Dog::Dog(): Animal()
 {
-    this->type = "Dog";
+    this->_type = "Dog";
     this->brain = new Brain();
     std::cout << "Dog default constructor called\n";
 }
 
+Dog::Dog(std::string type) : Animal(type)
+{
+    this->brain = new Brain();
+    std::cout << "Dog constructor called\n";
+}
+
 Dog::Dog(const Dog &src): Animal()
 {
-    this->type = src.getType();
-    this->brain = new Brain();
-    *this->brain = *src.brain;
+
     std::cout << "Dog copy constructor called\n";
+    this->brain = new Brain();
+    *this = src;
+}
+
+Dog& Dog::operator=(const Dog& ref)
+{
+    std::cout << "Dog assignation copy constructor called" << std::endl;
+    this->_type = ref.getType();
+    *this->brain = *ref.brain;
+    return *this;
 }
 
 void Dog::makeSound(void) const
@@ -23,8 +37,7 @@ void Dog::makeSound(void) const
 
 Dog::~Dog()
 {
-    if (this->brain)
-        delete this->brain;
+    delete this->brain;
     std::cout << "Dog default destructor called\n";
 }
 

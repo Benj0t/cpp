@@ -10,24 +10,12 @@ Cat::Cat(): Animal()
 
 Cat::Cat(const Cat &src): Animal()
 {
+    this->_type = src.getType();
+    this->brain = new Brain();
+    *this->brain = *src.brain;
     std::cout << "Cat copy constructor called\n";
-    this->brain = new Brain();
-    *this = src;
 }
 
-Cat::Cat(std::string type) : Animal(type)
-{
-    this->brain = new Brain();
-    std::cout << "Cat constructor called\n";
-}
-
-Cat& Cat::operator=(const Cat& ref)
-{
-    std::cout << "Cat assignation copy constructor called" << std::endl;
-    this->_type = ref.getType();
-    *this->brain = *ref.brain;
-    return *this;
-}
 
 void Cat::makeSound(void) const
 {

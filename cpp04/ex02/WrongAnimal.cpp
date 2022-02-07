@@ -1,8 +1,26 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(): type("Wrong animal")
+WrongAnimal::WrongAnimal(): _type("Wrong animal")
 {
     std::cout << "WrongAnimal default constructor called\n";
+}
+
+WrongAnimal::WrongAnimal(std::string type) : _type(type)
+{
+    std::cout << "WrongAnimal constructor called\n";
+}
+
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& ref)
+{
+    std::cout << "WrongAnimal assignation copy constructor called" << std::endl;
+    this->_type = ref.getType();
+    return *this;
+}
+
+WrongAnimal::WrongAnimal(const WrongAnimal &ref)
+{
+    std::cout << "WrongAnimal copy constructor called" << std::endl;
+    *this = ref;
 }
 
 void WrongAnimal::makeSound(void) const
@@ -17,5 +35,5 @@ WrongAnimal::~WrongAnimal()
 
 std::string WrongAnimal::getType() const
 {
-    return (this->type);
+    return (this->_type);
 }

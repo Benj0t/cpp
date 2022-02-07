@@ -29,10 +29,6 @@ Animal& Animal::operator=(const Animal& ref)
     return *this;
 }
 
-void Animal::makeSound(void) const
-{
-    std::cout << "Default animal sound\n";
-}
 
 Animal::~Animal()
 {

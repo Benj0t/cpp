@@ -11,8 +11,8 @@ ifeq ($(shell uname -s),Darwin)
 endif
 
 #The Target Binary Program
-TARGET				:= brain
-TARGET_BONUS		:= brain-bonus
+TARGET				:= a.out
+TARGET_BONUS		:= a.out-bonus
 
 BUILD				:= release
 
