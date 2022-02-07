@@ -13,7 +13,7 @@ class ICharacter;
 class AMateria
 {
 private:
-	std::string type;
+	std::string _type;
 	AMateria();
 public:
     AMateria(std::string const & type);
