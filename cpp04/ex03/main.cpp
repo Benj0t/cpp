@@ -6,7 +6,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
-/*
+
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
@@ -36,8 +36,8 @@ int main()
 
 	return (0);
 }
-*/
 
+/*
 int main()
 {
 IMateriaSource* src = new MateriaSource();
@@ -62,4 +62,4 @@ delete me;
 delete src;
 delete tmp;
 return 0;
-}
+}*/

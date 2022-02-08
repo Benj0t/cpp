@@ -9,11 +9,11 @@ private:
 
 public:
 	Cure();
-	~Cure();
 	Cure(const Cure &I);
 	Cure& operator=(const Cure& ref);
-	virtual AMateria *clone() const;
-	virtual void use(ICharacter &target);
+	virtual ~Cure();
+	AMateria *clone() const;
+	void use(ICharacter &target);
 };
 
 #endif

@@ -12,10 +12,10 @@ private:
 	AMateria *inventory[4];
 	Character();
 public:
-	~Character();
 	Character(const Character &C);
 	Character(std::string name);
     Character& operator=(const Character& ref);
+	virtual ~Character();
 	virtual std::string const & getName() const;
 	virtual void equip(AMateria* m);
 	virtual void unequip(int idx);

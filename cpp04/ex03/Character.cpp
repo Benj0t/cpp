@@ -21,8 +21,11 @@ Character::Character(const Character &C): inventory()
 	}
 	i = 0;
     while (i < 4)
+	{
 		inventory[i] = C.inventory[i]->clone();
-    std::cout << "AMateria copy constructor called" << std::endl;	
+		i++;
+	}
+	std::cout << "AMateria copy constructor called" << std::endl;	
 }
 
 Character::Character(std::string name) : inventory()
@@ -81,8 +84,11 @@ Character& Character::operator=(const Character& ref)
 	}
 	i = 0;
     while (i < 4)
+	{
 		inventory[i] = ref.inventory[i]->clone();
-    std::cout << "AMateria assignation copy constructor called" << std::endl;
+		i++;
+	}
+	std::cout << "AMateria assignation copy constructor called" << std::endl;
     return *this;
 }
 
