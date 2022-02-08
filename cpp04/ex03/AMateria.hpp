@@ -12,11 +12,13 @@ class ICharacter;
 
 class AMateria
 {
-private:
+protected:
 	std::string _type;
-	AMateria();
 public:
+	AMateria();
     AMateria(std::string const & type);
+    AMateria(const AMateria &ref);
+    AMateria& operator=(const AMateria& ref);
     std::string const & getType() const;
     virtual ~AMateria();
     virtual AMateria* clone() const = 0;

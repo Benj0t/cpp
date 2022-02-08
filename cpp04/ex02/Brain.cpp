@@ -27,14 +27,6 @@ Brain& Brain::operator=(const Brain& ref)
     return *this;
 }
 
-std::string toString(int i) 
-{
-    std::stringstream ss;
-    ss << i;
- 
-    return ss.str();
-}
-
 Brain::Brain()
 {
     int i;
@@ -42,7 +34,7 @@ Brain::Brain()
     i = 0;
     while (i < 100)
     {
-        this->_ideas[i] = "idea number " + toString(i + 1);
+        this->_ideas[i] = "idea";
         i++;
     }
     std::cout << "Default Brain constructor called\n";
