@@ -20,7 +20,6 @@ int main()
 		int	n = 4;
 
 		std::cout << std::endl;
-		std::cout << "//////////////////////////////////////////////" << std::endl;
 		std::cout << std::endl;
 		Animal *animals[n];
 		for (int i = 0; i < n; i++)
@@ -47,7 +46,8 @@ int main()
 		std::cout << "otherAnimal.makeSound() = "; otherAnimal.makeSound();
 
 		std::cout << std::endl;
-		Animal otherAnimal2 = *animals[2];
+		Animal otherAnimal2;
+		otherAnimal2 = *animals[3];
 		std::cout << "otherAnimal2.getType() = " << otherAnimal2.getType() << std::endl;
 		std::cout << "otherAnimal2.makeSound() = "; otherAnimal2.makeSound();
 
@@ -59,20 +59,32 @@ int main()
 		}
 	}
 	{
-		std::cout << std::endl;
-		std::cout << "//////////////////////////////////////////////" << std::endl;
+		std::cout << std::endl << "COPY TEST" << std::endl;
 		std::cout << std::endl;
 
-		Cat cat;
+		Cat *cat = new Cat();
 		std::cout << std::endl;
-		Cat cat2 = cat;
+		Cat cat2(*cat);
 		std::cout << std::endl;
+		delete cat;
 		cat2.printIdea(50);
 		std::cout << "cat2.getType() = " << cat2.getType() << std::endl;
 		std::cout << "cat2.makeSound() = "; cat2.makeSound();
 		std::cout << std::endl;
 	}
-	std::cout << std::endl;
-	std::cout << "//////////////////////////////////////////////" << std::endl;
-	std::cout << std::endl;
+	{
+		std::cout << std::endl << "ASSIGNATION TEST" << std::endl;
+		std::cout << std::endl;
+
+		Cat *cat = new Cat();
+		std::cout << std::endl;
+		Cat cat2;
+		cat2 = *cat;
+		std::cout << std::endl;
+		delete cat;
+		cat2.printIdea(50);
+		std::cout << "cat2.getType() = " << cat2.getType() << std::endl;
+		std::cout << "cat2.makeSound() = "; cat2.makeSound();
+		std::cout << std::endl;
+	}
 }

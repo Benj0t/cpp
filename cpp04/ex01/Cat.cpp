@@ -15,12 +15,6 @@ Cat::Cat(const Cat &src): Animal()
     *this = src;
 }
 
-Cat::Cat(std::string type) : Animal(type)
-{
-    this->brain = new Brain();
-    std::cout << "Cat constructor called\n";
-}
-
 Cat& Cat::operator=(const Cat& ref)
 {
     std::cout << "Cat assignation copy constructor called" << std::endl;

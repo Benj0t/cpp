@@ -21,14 +21,34 @@ int main()
 	const Animal* i = new Cat();
 	const WrongAnimal* wa = new WrongAnimal();
 	const WrongAnimal* wc = new WrongCat();
+	const WrongCat* wcc = new WrongCat();
+	std::cout << std::endl;
+	const Animal toto(*j);
+	const Animal titi = *i;
+	std::cout << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << wa->getType() << " " << std::endl;
 	std::cout << wc->getType() << " " << std::endl;
+	std::cout << wcc->getType() << " " << std::endl << std::endl;
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
 	wa->makeSound();
 	wc->makeSound();
+	wcc->makeSound();
+	std::cout << std::endl;
+	delete j;
+	delete i;
+	std::cout << std::endl;
+	std::cout << toto.getType() << " " << std::endl;
+	toto.makeSound();
+	std::cout << titi.getType() << " " << std::endl;
+	titi.makeSound();
+	std::cout << std::endl;
+	delete meta;
+	delete wa;
+	delete wc;
+	delete wcc;
 }

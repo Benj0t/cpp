@@ -12,7 +12,7 @@ protected:
     std::string _type;
 public:
     std::string getType() const;
-    virtual void makeSound(void) const;
+    void makeSound(void) const;
     WrongAnimal();
     WrongAnimal(std::string type);
     WrongAnimal(const WrongAnimal &ref);

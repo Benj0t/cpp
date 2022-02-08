@@ -11,7 +11,6 @@ private:
 public:
     Cat();
     Cat(const Cat &src);
-    Cat(std::string type);
     Cat& operator=(const Cat& ref);
     void makeSound(void) const;
     void printIdea(int id);

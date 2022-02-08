@@ -6,11 +6,6 @@ Cat::Cat(): Animal()
     std::cout << "Cat default constructor called\n";
 }
 
-Cat::Cat(std::string type) : Animal(type)
-{
-    std::cout << "Cat constructor called\n";
-}
-
 Cat& Cat::operator=(const Cat& ref)
 {
     std::cout << "Cat assignation copy constructor called" << std::endl;

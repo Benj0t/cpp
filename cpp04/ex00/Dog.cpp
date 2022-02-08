@@ -6,11 +6,6 @@ Dog::Dog(): Animal()
     std::cout << "Dog default constructor called\n";
 }
 
-Dog::Dog(std::string type) : Animal(type)
-{
-    std::cout << "Dog constructor called\n";
-}
-
 Dog& Dog::operator=(const Dog& ref)
 {
     std::cout << "Dog assignation copy constructor called" << std::endl;

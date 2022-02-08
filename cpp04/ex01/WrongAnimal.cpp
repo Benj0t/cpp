@@ -5,11 +5,6 @@ WrongAnimal::WrongAnimal(): _type("Wrong animal")
     std::cout << "WrongAnimal default constructor called\n";
 }
 
-WrongAnimal::WrongAnimal(std::string type) : _type(type)
-{
-    std::cout << "WrongAnimal constructor called\n";
-}
-
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& ref)
 {
     std::cout << "WrongAnimal assignation copy constructor called" << std::endl;

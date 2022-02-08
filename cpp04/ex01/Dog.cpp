@@ -8,12 +8,6 @@ Dog::Dog(): Animal()
     std::cout << "Dog default constructor called\n";
 }
 
-Dog::Dog(std::string type) : Animal(type)
-{
-    this->brain = new Brain();
-    std::cout << "Dog constructor called\n";
-}
-
 Dog::Dog(const Dog &src): Animal()
 {
 
