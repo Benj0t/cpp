@@ -13,7 +13,7 @@ WrongCat& WrongCat::operator=(const WrongCat& ref)
     return *this;
 }
 
-WrongCat::WrongCat(const WrongCat &ref)
+WrongCat::WrongCat(const WrongCat &ref) : WrongAnimal()
 {
     std::cout << "WrongCat copy constructor called" << std::endl;
     *this = ref;

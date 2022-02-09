@@ -40,7 +40,7 @@ void    Bureaucrat::signForm(const Form &f)
         }
         catch (std::exception & e)
         {
-            std::cout << this->name << " cannot sign " << f.getName() << " because his rank is too low\n";
+            std::cout << this->name << " cannot sign " << f.getName() << " because his grade is too low\n";
             std::cout << e.what() << std::endl;
         }
     }

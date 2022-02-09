@@ -13,7 +13,7 @@ Dog& Dog::operator=(const Dog& ref)
     return *this;
 }
 
-Dog::Dog(const Dog &ref)
+Dog::Dog(const Dog &ref) : Animal()
 {
     std::cout << "Dog copy constructor called" << std::endl;
     *this = ref;

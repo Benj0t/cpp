@@ -13,7 +13,7 @@ Cat& Cat::operator=(const Cat& ref)
     return *this;
 }
 
-Cat::Cat(const Cat &ref)
+Cat::Cat(const Cat &ref) : Animal()
 {
     std::cout << "Cat copy constructor called" << std::endl;
     *this = ref;
