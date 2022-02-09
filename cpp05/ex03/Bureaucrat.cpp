@@ -3,7 +3,7 @@
 
 Bureaucrat::Bureaucrat()
 {
-    throw Bureaucrat::wrongConstructor;
+    // throw Bureaucrat::wrongConstructor;
 }
 
 Bureaucrat::Bureaucrat(std::string nme, int grade): name(nme)

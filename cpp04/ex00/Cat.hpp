@@ -10,7 +10,7 @@ public:
     Cat();
     Cat(const Cat &ref);
     Cat& operator=(const Cat& ref);
-    ~Cat();
+    virtual ~Cat();
 };
 
 #endif

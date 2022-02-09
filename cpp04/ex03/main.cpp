@@ -44,19 +44,21 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-
-	Character	cloud;
-	cloud.equip(src->createMateria("ice"));
-	cloud.equip(src->createMateria("fire"));
-	cloud.equip(src->createMateria("cure"));
+	std::cout << "TEST USING COPY CONSTRUCTOR" << std::endl;
+	std::cout << std::endl;
+	Character *cloud = new Character();
+	Character toto("toto");
+	cloud->equip(src->createMateria("ice"));
+	cloud->equip(src->createMateria("fire")); // Should not work
+	cloud->equip(src->createMateria("cure"));
 	{
-		Character	cloud2(cloud);
-		cloud2.use(0, cloud);
-		cloud2.use(1, cloud);
+		Character	cloud2(*cloud);
+		delete cloud;
+		std::cout << std::endl;
+		cloud2.use(0, toto);
+		cloud2.use(1, toto);
+		cloud2.use(2, toto); // should print nothing because fire doesnt work
 	}
-	cloud.use(0, cloud);
-	cloud.use(1, cloud);
-
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << "END OF THE TESTS" << std::endl << std::endl;

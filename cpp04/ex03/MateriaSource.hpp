@@ -11,9 +11,9 @@ private:
 	AMateria *materia[4];
 public:
 	MateriaSource();
-	~MateriaSource();
 	MateriaSource(const MateriaSource &M);
 	MateriaSource& operator=(const MateriaSource& ref);
+	virtual ~MateriaSource();
 	virtual void learnMateria(AMateria* a);
 	virtual AMateria* createMateria(std::string const & type);
 };

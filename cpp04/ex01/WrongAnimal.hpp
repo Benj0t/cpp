@@ -16,7 +16,7 @@ public:
     WrongAnimal();
     WrongAnimal(const WrongAnimal &ref);
     WrongAnimal& operator=(const WrongAnimal& ref);
-    ~WrongAnimal();
+    virtual ~WrongAnimal();
 };
 
 #endif

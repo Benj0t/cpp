@@ -10,7 +10,7 @@ public:
     WrongCat();
     WrongCat(const WrongCat &ref);
     WrongCat& operator=(const WrongCat& ref);
-    ~WrongCat();
+    virtual ~WrongCat();
 };
 
 #endif

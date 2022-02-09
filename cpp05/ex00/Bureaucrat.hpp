@@ -6,32 +6,34 @@
 #include <cstring>
 #include <fstream>
 
-class Bureaucrat: public std::exception
+class Bureaucrat
 {
 private:
     const std::string name;
     int   grade;
 public:
+    virtual ~Bureaucrat();
     class GradeTooHighException : public std::exception
     {
         public:
-            const char *what() const throw();
+            virtual const char *what() const throw(){
+                return ("Your grade is too high !");
+            }
     };
     class GradeTooLowException : public std::exception
     {
         public:
-            const char *what() const throw();
-    };   
-    Bureaucrat();
+            virtual const char *what() const throw(){
+                return ("Your grade is too low");
+            }
+    };
     std::string getName() const;
     int getGrade() const;
     void    decrementGrade();
     void    incrementGrade();
     Bureaucrat(const Bureaucrat& bcrat);
-    Bureaucrat(int grade);
     Bureaucrat(std::string nme, int grade);
     Bureaucrat& operator= (const Bureaucrat& bcrat);
-    ~Bureaucrat();
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &bcrat);

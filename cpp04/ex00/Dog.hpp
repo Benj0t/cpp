@@ -10,7 +10,7 @@ public:
     Dog();
     Dog(const Dog &ref);
     Dog& operator=(const Dog& ref);
-    ~Dog();
+    virtual ~Dog();
 };
 
 #endif
