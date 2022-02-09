@@ -12,26 +12,28 @@ Character::Character(const Character &C): inventory()
 	int i;
 
     i = 0;
-    this->name = C.name;
+    this->name = C.getName();
 	while (i < 4)
 	{
 		if (inventory[i])
 			delete inventory[i];
+		inventory[i] = NULL;
 		i++;
 	}
 	i = 0;
     while (i < 4)
 	{
-		inventory[i] = C.inventory[i]->clone();
+		if (C.inventory[i])
+			inventory[i] = C.inventory[i]->clone();
 		i++;
 	}
-	std::cout << "AMateria copy constructor called" << std::endl;	
+	std::cout << "Character copy constructor called" << std::endl;	
 }
 
 Character::Character(std::string name) : inventory()
 {
     this->name = name;
-    std::cout << "AMateria constructor called" << std::endl;
+    std::cout << "Character constructor called" << std::endl;
 }
 
 std::string const& Character::getName() const
@@ -80,15 +82,17 @@ Character& Character::operator=(const Character& ref)
 	{
 		if (inventory[i])
 			delete inventory[i];
+		inventory[i] = NULL;
 		i++;
 	}
 	i = 0;
     while (i < 4)
 	{
-		inventory[i] = ref.inventory[i]->clone();
+		if (ref.inventory[i])
+			inventory[i] = ref.inventory[i]->clone();
 		i++;
 	}
-	std::cout << "AMateria assignation copy constructor called" << std::endl;
+	std::cout << "Character assignation copy constructor called" << std::endl;
     return *this;
 }
 
@@ -98,6 +102,10 @@ Character::~Character()
 
     i = 0;
     while (i < 4)
-		delete inventory[i++];
-    std::cout << "AMateria destructor called" << std::endl;
+	{
+		if (inventory[i] != NULL)
+			delete inventory[i];
+		i++;
+	}
+	std::cout << "Character destructor called" << std::endl;
 }

@@ -30,7 +30,11 @@ MateriaSource::~MateriaSource()
 {
     int i = 0;
     while (i < 4)
-        delete materia[i++];
+    {
+        if (materia[i])
+            delete materia[i];
+        i++;
+    }
     std::cout << "MateriaSource default destructor called" << std::endl;
 }
 

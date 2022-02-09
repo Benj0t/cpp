@@ -10,8 +10,8 @@ class Character : public ICharacter
 private:
 	std::string name;
 	AMateria *inventory[4];
-	Character();
 public:
+	Character();
 	Character(const Character &C);
 	Character(std::string name);
     Character& operator=(const Character& ref);
