@@ -2,25 +2,30 @@
 
 Form::Form(): name(), signGrade(150), executionGrade(150), isSigned(false)
 {
+    std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string nme, int Sgrade, int Egrade): name(nme), isSigned(false), executionGrade(Egrade), signGrade(Sgrade)
+Form::Form(std::string nme, int Sgrade, int Egrade): name(nme), signGrade(Sgrade), executionGrade(Egrade), isSigned(false)
 {
     if (Egrade < 1 || Sgrade < 1)
         throw Form::GradeTooHighException();
     if (Egrade > 150 || Sgrade > 150)
         throw Form::GradeTooLowException();
+    std::cout << "Form constructor called" << std::endl;
 }
 
-Form::Form(const Form& f): name(f.getName()), isSigned(f.getIsSign()), executionGrade(f.getSignGrade()), signGrade(f.getExecutionGrade())
+Form::Form(const Form& f): name(f.getName()), signGrade(f.getExecutionGrade()), executionGrade(f.getSignGrade()), isSigned(f.getIsSign())
 {
+    std::cout << "Form copy constructor called" << std::endl;
 }
 
 void Form::beSigned(const Bureaucrat &b) const
 {
-    if (b.getGrade() > this->getSignGrade())
+    if ((b.getGrade() > this->getSignGrade()))
+    {
         throw Form::GradeTooLowException();
-	bool &n = const_cast<bool &>(this->isSigned);
+    }
+    bool &n = const_cast<bool &>(this->isSigned);
 	n = true;
 }
 
@@ -55,15 +60,22 @@ const char *Form::GradeTooLowException::what() const throw()
     return("FORM: This grade is too low !\n");
 }
 
+// Form& Form::operator=(const Form& f)
+// {
+// 	if (this == &f)
+// 		return *this;
+// 	std::string &n = const_cast<std::string &>(this->name);
+// 	n = f.getName();
+//     int nb = const_cast<int &>(this->signGrade);
+// 	nb = f.getSignGrade();
+// 	return *this;
+// }
+
 Form& Form::operator=(const Form& f)
 {
-	if (this == &f)
-		return *this;
-	std::string &n = const_cast<std::string &>(this->name);
-	n = f.getName();
-    int nb = const_cast<int &>(this->signGrade);
-	nb = f.getSignGrade();
-	return *this;
+    this->isSigned = f.isSigned;
+    std::cout << "Form assignation copy constructor called" << std::endl;
+ 	return *this;
 }
 
 std::ostream& operator<<(std::ostream &out, const Form &f)
@@ -77,5 +89,5 @@ std::ostream& operator<<(std::ostream &out, const Form &f)
 
 Form::~Form()
 {
-
+    std::cout << "Form destructor called" << std::endl;
 }

@@ -9,15 +9,15 @@
 
 class Bureaucrat;
 
-class Form: public std::exception
+class Form
 {
 private:
     const std::string name;
     const int     signGrade;
     const int     executionGrade;
     bool    isSigned;
-    Form();
 public:
+    Form();
     class GradeTooHighException : public std::exception
     {
         public:

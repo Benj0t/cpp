@@ -9,7 +9,7 @@
 
 class Form;
 
-class Bureaucrat: public std::exception
+class Bureaucrat
 {
 private:
     const std::string name;

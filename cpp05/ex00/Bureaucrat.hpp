@@ -12,7 +12,6 @@ private:
     const std::string name;
     int   grade;
 public:
-    virtual ~Bureaucrat();
     class GradeTooHighException : public std::exception
     {
         public:
@@ -27,6 +26,7 @@ public:
                 return ("Your grade is too low");
             }
     };
+    virtual ~Bureaucrat();
     std::string getName() const;
     int getGrade() const;
     void    decrementGrade();
