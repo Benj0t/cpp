@@ -1,5 +1,5 @@
-#ifndef ROBOTOMY
-# define ROBOTOMY
+#ifndef ROBOTOMY_HPP
+# define ROBOTOMY_HPP
 
 # include <iostream>
 # include <iostream>
@@ -10,14 +10,14 @@
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
 
-class Robotomy: public Form
+class RobotomyRequestForm: public Form
 {
 private:
     const std::string target;
-    void robotomisation(void);
+    void robotomisation(void) const;
 public:
-    virtual void Robotomy::execute(Bureaucrat const & executor) const;
-    Robotomy(std::string target);
-    ~Robotomy();
+    virtual void execute(Bureaucrat const & executor) const;
+    RobotomyRequestForm(std::string target);
+    ~RobotomyRequestForm();
 };
 #endif

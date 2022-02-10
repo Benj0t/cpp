@@ -15,9 +15,8 @@ private:
     const std::string name;
     const int     signGrade;
     const int     executionGrade;
-    bool    isSigned;
+    bool          isSigned;
 public:
-    Form();
     class GradeTooHighException : public std::exception
     {
         public:

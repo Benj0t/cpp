@@ -1,35 +1,30 @@
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
-void Robotomy::robotomisation(Bureaucrat const & executor)
+
+void RobotomyRequestForm::robotomisation(void) const
 {
-    try
-        execute(executor);
-	catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
-        return;
-    }
     std::cout << "You hear drilling noises" << std::endl;
-    if (rand % 2)
+    if (rand() % 2)
         std::cout << target << " has been successfully robotomised !" << std::endl;
     else
-        std::cout << "Robotomy failed !" << std::endl;
+        std::cout << "RobotomyRequestForm failed !" << std::endl;
 }
 
-void Robotomy::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (this->isSigned == false)
         throw Form::NotSigned();
-    if (execGrade > this->executionGrade)
+    if (executor.getGrade() > this->executionGrade)
         throw Form::GradeTooLowException();
     robotomisation();
 }
 
-Robotomy::Robotomy(std::string trget): Form("RobotomyCreationForm", 72, 45), target(trget)
+RobotomyRequestForm::RobotomyRequestForm(std::string trget): Form("RobotomyRequestFormCreationForm", 72, 45), target(trget)
 {
-    std::cout << "Robotomy default constructor called !" << std::endl;
+    std::cout << "RobotomyRequestForm default constructor called !" << std::endl;
 }
 
-Robotomy::~Robotomy()
+RobotomyRequestForm::~RobotomyRequestForm()
 {
-    std::cout << "Robotomy default destructor called !" << std::endl;
+    std::cout << "RobotomyRequestForm default destructor called !" << std::endl;
 }

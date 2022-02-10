@@ -1,5 +1,5 @@
-#ifndef PRESIDENTIAL
-# define PRESIDENTIAL
+#ifndef PRESIDENTIAL_HPP
+# define PRESIDENTIAL_HPP
 
 # include <iostream>
 # include <iostream>
@@ -10,14 +10,13 @@
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
 
-class Presidential: public Form
+class PresidentialPardonForm: public Form
 {
 private:
     const std::string target;
-    void pardon(void);
 public:
-    virtual void Presidential::execute(Bureaucrat const & executor) const;
-    Presidential(std::string target);
-    ~Presidential();
+    virtual void execute(Bureaucrat const & executor) const;
+    PresidentialPardonForm(std::string target);
+    ~PresidentialPardonForm();
 };
 #endif

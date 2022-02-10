@@ -1,10 +1,5 @@
 #include "Form.hpp"
 
-Form::Form(): name(), signGrade(150), executionGrade(150), isSigned(false)
-{
-    std::cout << "Form default constructor called" << std::endl;
-}
-
 Form::Form(std::string nme, int Sgrade, int Egrade): name(nme), signGrade(Sgrade), executionGrade(Egrade), isSigned(false)
 {
     if (Egrade < 1 || Sgrade < 1)
@@ -59,17 +54,6 @@ const char *Form::GradeTooLowException::what() const throw()
 {
     return("FORM: This grade is too low !\n");
 }
-
-// Form& Form::operator=(const Form& f)
-// {
-// 	if (this == &f)
-// 		return *this;
-// 	std::string &n = const_cast<std::string &>(this->name);
-// 	n = f.getName();
-//     int nb = const_cast<int &>(this->signGrade);
-// 	nb = f.getSignGrade();
-// 	return *this;
-// }
 
 Form& Form::operator=(const Form& f)
 {

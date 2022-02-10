@@ -2,11 +2,13 @@
 
 Bureaucrat::Bureaucrat(std::string nme, int grade) : name(nme)
 {
-    if (grade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    if (grade > 150)
-        throw Bureaucrat::GradeTooLowException();
     this->grade = grade;
+    if (this->grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    if (this->grade > 150)
+    {
+        throw Bureaucrat::GradeTooLowException();
+    }
     std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
@@ -18,21 +20,21 @@ Bureaucrat::Bureaucrat(const Bureaucrat& bcrat) : name(bcrat.getName())
 
 void    Bureaucrat::incrementGrade()
 {
-    if (grade == 1)
+    if (grade <= 1)
         throw Bureaucrat::GradeTooHighException();
     this->grade = this->grade - 1;
 }
 
 void    Bureaucrat::decrementGrade()
 {
-    if (grade == 150)
+    if (grade >= 150)
         throw Bureaucrat::GradeTooLowException();
     this->grade = this->grade + 1;
 }
 
 std::string Bureaucrat::getName() const
 {
-    return (name);
+    return (this->name);
 }
 
 int Bureaucrat::getGrade() const

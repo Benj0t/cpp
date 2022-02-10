@@ -1,14 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
 
-void Shrubbery::printTree(Bureaucrat const & executor)
+void ShrubberyCreationForm::printTree() const
 {
-    try
-        execute(executor);
-	catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
-        return;
-    }
-    std::ofstream outfile (target + "_shrubbery");
+    std::string file;
+    file = target;
+    file += "_ShrubberyCreationForm";
+    std::ofstream outfile (file.c_str());
     outfile << "          &&& &&  & &&" << std::endl;
     outfile << "      && &\\/&\\|& ()|/ @, &&" << std::endl;
     outfile << "      &\\/(/&/&||/& /_/)_&/_&" << std::endl;
@@ -25,21 +22,25 @@ void Shrubbery::printTree(Bureaucrat const & executor)
     outfile.close();
 }
 
-void Shrubbery::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     if (this->isSigned == false)
+    {
         throw Form::NotSigned();
-    if (execGrade > this->executionGrade)
+    }
+    if (executor.getGrade() > this->executionGrade)
+    {
         throw Form::GradeTooLowException();
-    printTree(executor);
+    }
+    printTree();
 }
 
-Shrubbery::Shrubbery(std::string trget): Form("ShrubberyCreationForm", 145, 137), target(trget)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string trget): Form("ShrubberyCreationForm", 145, 137), target(trget)
 {
-    std::cout << "Shrubbery default constructor called !" << std::endl;
+    std::cout << "ShrubberyCreationForm default constructor called !" << std::endl;
 }
 
-Shrubbery::~Shrubbery()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "Shrubbery default destructor called !" << std::endl;
+    std::cout << "ShrubberyCreationForm default destructor called !" << std::endl;
 }

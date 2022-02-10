@@ -9,12 +9,11 @@
 
 class Form;
 
-class Bureaucrat: public std::exception
+class Bureaucrat
 {
 private:
     const std::string name;
     int   grade;
-    Bureaucrat();
 public:
     class GradeTooHighException : public std::exception
     {
@@ -26,8 +25,8 @@ public:
         public:
             const char *what() const throw();
     };
+    void executeForm(Form const & form);
     void signForm(const Form &f);
-    void executeForm(Form const & form) ;
     std::string getName() const;
     int getGrade() const;
     void    decrementGrade();

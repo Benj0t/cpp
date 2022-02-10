@@ -9,18 +9,17 @@
 
 class Bureaucrat;
 
-class Form: public std::exception
+class Form
 {
 protected:
     const std::string name;
     const int     signGrade;
     const int     executionGrade;
     bool    isSigned;
-    Form();
+public:
     Form(const Form& bcrat);
     Form(int grade);
     Form(std::string nme, int Sgrade, int Egrade);
-public:
     class GradeTooHighException : public std::exception
     {
         public:
@@ -51,7 +50,7 @@ public:
     int getSignGrade() const;
     bool getIsSign() const;
     Form& operator= (const Form& bcrat);
-    ~Form();
+    virtual ~Form();
 };
 
 std::ostream& operator<<(std::ostream &out, const Form &f);

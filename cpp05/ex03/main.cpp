@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
+
 /*
 int main()
 {
@@ -49,6 +54,7 @@ int main()
 		leonid.signForm(constitution);
 	}
 }*/
+
 
 int main()
 {
@@ -129,18 +135,42 @@ int main()
 		Form* rrf;
 		Form* scf;
 		Form* ppf;
+		Form* wrong;
 		std::cout << std::endl << "----robotomy request test----" << std::endl;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		b2.signForm(*rrf);
-		b2.executeForm(*rrf);
+		try{
+			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+			b2.signForm(*rrf);
+			b2.executeForm(*rrf);
+		}
+		catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+		try{
+			scf = someRandomIntern.makeForm("shrubbery creation", "home");
+			b2.signForm(*scf);
+			b2.executeForm(*scf);
+		}
+		catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+		try{
+			ppf = someRandomIntern.makeForm("presidential pardon", "grezette");
+			b2.signForm(*ppf);
+			b2.executeForm(*ppf);
+		}
+		catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+		try{
+			wrong = someRandomIntern.makeForm("Conseil National de l'UNLSD", "grezette");
+			b2.signForm(*wrong);
+			b2.executeForm(*wrong);
+		}
+		catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
 		std::cout << std::endl << "----shrubbery creation test----" << std::endl;
-		scf = someRandomIntern.makeForm("shrubbery creation", "home");
-		b2.signForm(*scf);
-		b2.executeForm(*scf);
 		std::cout << std::endl << "----presidential pardon test ----" << std::endl;
-		ppf = someRandomIntern.makeForm("presidential pardon", "grezette");
-		b2.signForm(*ppf);
-		b2.executeForm(*ppf);
 		delete rrf;
 		delete scf;
 		delete ppf;

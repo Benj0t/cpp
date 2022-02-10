@@ -1,40 +1,53 @@
 #include "Intern.hpp"
+#include "Form.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-Intern::Intern()
+Form *CreateRobotomyRequestForm(std::string target)
 {
-    throw Bureaucrat::wrongConstructor;
+    return (new RobotomyRequestForm(target));
 }
 
-Robotomy Intern::CreateRobotomy(std::string target)
+Form *CreateShrubberyCreationForm(std::string target)
 {
-    return (new Robotomy(target))
+    return (new ShrubberyCreationForm(target));
 }
 
-Shrubbery Intern::CreateShrubbery(std::string target)
+Form *CreatePresidentialPardonForm(std::string target)
 {
-    return (new Shrubbery(target))
+    return (new PresidentialPardonForm(target));
 }
 
-Presidential Intern::CreatePresidential(std::string target)
+const char *Intern::WrongName::what() const throw()
 {
-    return (new Presidential(target))
+    return("INTERN: Could not create the form, the name is wrong!");
 }
 
-Intern::makeForm(std::string name, std::string target)
+Form *Intern::makeForm(std::string name, std::string target)
 {
-    std::string[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+    std::string tab[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+    Form *(*forms[3])(std::string) = {&CreateRobotomyRequestForm, &CreatePresidentialPardonForm, &CreateShrubberyCreationForm};
+        
     int i = 0;
-    Form ret;
-    Intern::form[3] = {new Robotomy(target), new Presidential(target), new Shrubbery(target)}
-    Form* (Intern::*forms[3])(std::string) = {&CreateRobotomy, &CreatePresidential, &CreateShrubbery};
     while (i < 3)
     {
-        if (string[i] == name)
+        if (tab[i].compare(name) == 0)
         {
-            ret = form[i](target);
             std::cout << "Intern created " << name << " form"<< std::endl;
+            return (forms[i](target));
         }
         i++;
     }
-    std::cerr << "Intern could not create the form (wrong name)" << std::endl;
+    throw Intern::WrongName();
+}
+
+Intern::Intern()
+{
+    std::cout << "Intern default destructor called" << std::endl;
+}
+
+Intern::~Intern()
+{
+    std::cout << "Intern default constructor called" << std::endl;
 }

@@ -14,7 +14,6 @@ class Bureaucrat
 private:
     const std::string name;
     int   grade;
-    Bureaucrat();
 public:
     class GradeTooHighException : public std::exception
     {

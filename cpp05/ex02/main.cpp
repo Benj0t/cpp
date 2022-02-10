@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 /*
 int main()
 {
@@ -86,7 +89,7 @@ int main()
 		try{
 			f1->execute(b1);
 		} catch (std::exception & e){
-			std::cout << e.what() << std::endl;
+			
 		}
 		b1.signForm(*f1);
 		b2.signForm(*f1);
@@ -120,8 +123,10 @@ int main()
 		}
 		b1.signForm(*f1);
 		b2.signForm(*f1);
+		b2.signForm(*f1);
 		b1.executeForm(*f1);
 		b2.executeForm(*f1);
+		std::cout << std::endl;
 		delete f1;
 	}
 }

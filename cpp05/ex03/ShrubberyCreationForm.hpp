@@ -1,5 +1,5 @@
-#ifndef SHRUBERRY
-# define SHRUBERRY
+#ifndef SHRUBERRY_HPP
+# define SHRUBERRY_HPP
 
 # include <iostream>
 # include <iostream>
@@ -9,14 +9,14 @@
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
 
-class Shrubbery: public Form
+class ShrubberyCreationForm: public Form
 {
 private:
     const std::string target;
-    void printTree(void);
+    void printTree(void) const;
 public:
     virtual void execute(Bureaucrat const & executor) const;
-    Shrubbery(std::string target);
-    ~Shrubbery();
+    ShrubberyCreationForm(std::string target);
+    ~ShrubberyCreationForm();
 };
 #endif

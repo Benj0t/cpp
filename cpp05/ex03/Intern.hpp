@@ -7,12 +7,16 @@
 # include <fstream>
 # include "Form.hpp"
 
-class Intern: public std::exception
+class Intern
 {
-private:
-    Intern();
 public:
     Form *makeForm(std::string name, std::string target);
+    class WrongName : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    Intern();
     ~Intern();
 };
 
