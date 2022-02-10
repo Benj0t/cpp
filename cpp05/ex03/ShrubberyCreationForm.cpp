@@ -24,11 +24,11 @@ void ShrubberyCreationForm::printTree() const
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    if (this->isSigned == false)
+    if (this->getIsSign() == false)
     {
         throw Form::NotSigned();
     }
-    if (executor.getGrade() > this->executionGrade)
+    if (executor.getGrade() > this->getExecutionGrade())
     {
         throw Form::GradeTooLowException();
     }
@@ -38,6 +38,19 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 ShrubberyCreationForm::ShrubberyCreationForm(std::string trget): Form("ShrubberyCreationForm", 145, 137), target(trget)
 {
     std::cout << "ShrubberyCreationForm default constructor called !" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): Form("ShrubberyCreationForm", 145, 137), target(src.target)
+{
+    std::cout << "ShrubberyCreationForm copy constructor called !" << std::endl;
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
+{
+    std::cout << "ShrubberyCreationForm assignation constructor called" << std::endl;
+	if (this != &src)
+		this->target = src.target;
+    return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

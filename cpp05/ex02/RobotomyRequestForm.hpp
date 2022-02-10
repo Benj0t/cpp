@@ -13,11 +13,13 @@
 class RobotomyRequestForm: public Form
 {
 private:
-    const std::string target;
+    std::string target;
     void robotomisation(void) const;
 public:
     virtual void execute(Bureaucrat const & executor) const;
     RobotomyRequestForm(std::string target);
+    RobotomyRequestForm(const RobotomyRequestForm& src);
+    RobotomyRequestForm& operator= (const RobotomyRequestForm& src);
     ~RobotomyRequestForm();
 };
 #endif

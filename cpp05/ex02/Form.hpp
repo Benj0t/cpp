@@ -11,7 +11,7 @@ class Bureaucrat;
 
 class Form
 {
-protected:
+private:
     const std::string name;
     const int     signGrade;
     const int     executionGrade;

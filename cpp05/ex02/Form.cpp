@@ -2,6 +2,7 @@
 
 Form::Form(std::string nme, int Sgrade, int Egrade): name(nme), signGrade(Sgrade), executionGrade(Egrade), isSigned(false)
 {
+    std::cout << "Form constructor called" << std::endl;
     if (Egrade < 1 || Sgrade < 1)
         throw Form::GradeTooHighException();
     if (Egrade > 150 || Sgrade > 150)
@@ -10,6 +11,7 @@ Form::Form(std::string nme, int Sgrade, int Egrade): name(nme), signGrade(Sgrade
 
 Form::Form(const Form& f): name(f.getName()), signGrade(f.getExecutionGrade()), executionGrade(f.getSignGrade()), isSigned(f.getIsSign())
 {
+    std::cout << "Form copy constructor called" << std::endl;
 }
 
 void Form::isExecutable(int execGrade) const
@@ -79,6 +81,7 @@ const char *Form::NotSigned::what() const throw()
 
 Form& Form::operator=(const Form& f)
 {
+    std::cout << "Form assignation copy constructor called" << std::endl;
 	if (this == &f)
 		return *this;
 	std::string &n = const_cast<std::string &>(this->name);

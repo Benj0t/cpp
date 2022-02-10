@@ -16,46 +16,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
 
-/*
-int main()
-{
-	{
-		Form cn("Le Conseil National 2019", 10, 30);
-		std::cout << cn;
-		Bureaucrat jd("Julien Delohen", 5);
-		std::cout << jd;
-		jd.signForm(cn);
-		std::cout << cn;
-		jd.signForm(cn);
-	}
-
-	try
-	{
-		Form tooHigh("errorHigh", 0, 20);
-	}
-	catch(std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	try
-	{
-		Form tooLow("errorLow", 10, 199);
-	}
-	catch(std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	{
-		Form constitution("l'an 1999", 1, 1);
-		Bureaucrat leonid("francis", 5);
-		std::cout << leonid;
-		leonid.signForm(constitution);
-	}
-}*/
-
-
 int main()
 {
 	Bureaucrat b1("Grezette", 149);
@@ -141,10 +101,13 @@ int main()
 			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 			b2.signForm(*rrf);
 			b2.executeForm(*rrf);
+			b2.executeForm(*rrf);
+			b2.executeForm(*rrf);
 		}
 		catch (std::exception & e){
 			std::cout << e.what() << std::endl;
 		}
+		std::cout << std::endl << "----shrubbery creation test----" << std::endl;
 		try{
 			scf = someRandomIntern.makeForm("shrubbery creation", "home");
 			b2.signForm(*scf);
@@ -153,6 +116,7 @@ int main()
 		catch (std::exception & e){
 			std::cout << e.what() << std::endl;
 		}
+		std::cout << std::endl << "----presidential pardon test ----" << std::endl;
 		try{
 			ppf = someRandomIntern.makeForm("presidential pardon", "grezette");
 			b2.signForm(*ppf);
@@ -161,6 +125,7 @@ int main()
 		catch (std::exception & e){
 			std::cout << e.what() << std::endl;
 		}
+		std::cout << std::endl << "----Wrong case test ----" << std::endl;
 		try{
 			wrong = someRandomIntern.makeForm("Conseil National de l'UNLSD", "grezette");
 			b2.signForm(*wrong);
@@ -169,8 +134,7 @@ int main()
 		catch (std::exception & e){
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << std::endl << "----shrubbery creation test----" << std::endl;
-		std::cout << std::endl << "----presidential pardon test ----" << std::endl;
+		std::cout << std::endl;
 		delete rrf;
 		delete scf;
 		delete ppf;
