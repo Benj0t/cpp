@@ -2,6 +2,7 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include <stdlib.h>
 
 Base *generate(void)
 {
@@ -31,39 +32,39 @@ void identify(Base *p)
 {
     if (dynamic_cast<A *>(p) != NULL)
     {
-        std::cout << "The actual type of the pointer is A" << std::endl;
+        std::cout << "ptr: The actual type of the pointer is A" << std::endl;
     }
     if (dynamic_cast<B *>(p) != NULL)
     {
-        std::cout << "The actual type of the pointer is B" << std::endl;
+        std::cout << "ptr: The actual type of the pointer is B" << std::endl;
     }
     if (dynamic_cast<C *>(p) != NULL)
     {
-        std::cout << "The actual type of the pointer is C" << std::endl;
+        std::cout << "ptr: The actual type of the pointer is C" << std::endl;
     }
 }
 
 void identify(Base &p)
 {
     try{
-        A& data = dynamic_cast<A &>(p);
-        std::cout << "The actual type of the pointer is A" << std::endl;
+        A data = dynamic_cast<A &>(p);
+        std::cout << "ref: The actual type of the pointer is A" << std::endl;
     }
-    catch(std::bad_cast &bc)
+    catch(std::exception &e)
     {
     }
     try{
-        B& data = dynamic_cast<B &>(p);
-        std::cout << "The actual type of the pointer is B" << std::endl;
+        B data = dynamic_cast<B &>(p);
+        std::cout << "ref: The actual type of the pointer is B" << std::endl;
     }
-    catch(std::bad_cast &bc)
+    catch(std::exception &e)
     {
     }
     try{
-        C& data = dynamic_cast<C &>(p);
-        std::cout << "The actual type of the pointer is C" << std::endl;
+        C data = dynamic_cast<C &>(p);
+        std::cout << "ref: The actual type of the pointer is C" << std::endl;
     }
-    catch(std::bad_cast &bc)
+    catch(std::exception &e)
     {
     }
 }

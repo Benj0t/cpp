@@ -15,5 +15,6 @@ int	main(void)
 	std::cout << "serialize result: " << ser << std::endl;
     std::cout << std::endl;
 	std::cout << "deserialize result: " << std::endl << deser << std::endl;
+	std::cout << "data: " << std::endl << data << std::endl;
 	return 0;
 }
