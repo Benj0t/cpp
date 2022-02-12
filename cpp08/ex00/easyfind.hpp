@@ -21,6 +21,6 @@ int easyfind(T data, int n)
     if (it == data.end())
         throw(NotFound());
     return (*it);
-}
+};
 
 #endif

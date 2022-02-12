@@ -41,9 +41,10 @@ void    Span::addNumRange(int from, int to, int step){
 }
       
 int     Span::shortestSpan(){
+    isSpan();
     std::sort(this->_myvector.begin(), this->_myvector.end());
     int minDist = this->longestSpan();
-    int tmpDist; nbmv
+    int tmpDist;
     std::vector<int>::iterator it;
     for (it = this->_myvector.begin(); it != this->_myvector.end() - 1; it++)
     {
@@ -55,11 +56,16 @@ int     Span::shortestSpan(){
 }
 
 int     Span::longestSpan(){
+    isSpan();
     int tmpMax = *std::max_element(this->_myvector.begin(), this->_myvector.end());
     int tmpMin = *std::min_element(this->_myvector.begin(), this->_myvector.end());
     return tmpMax - tmpMin;
 }
 
+void    Span::isSpan(){
+    if (this->_myvector.size() <= 1)
+        throw noSpanException();
+}
 
 void    Span::print_vect(){
     for (std::vector<int>::iterator it = this->_myvector.begin(); it != this->_myvector.end(); it++)
@@ -77,4 +83,11 @@ Span::fullSpanException::fullSpanException(){}
 const char* Span::fullSpanException::what() const throw()
 {
 	return "Span exception : Span is already full you can't add more integer";
+}
+
+Span::noSpanException::noSpanException(){}
+
+const char* Span::noSpanException::what() const throw()
+{
+	return "Span exception : need at least 2 elements to have a Span";
 }
