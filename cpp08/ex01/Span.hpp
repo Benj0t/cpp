@@ -38,3 +38,4 @@ class Span{
 				virtual const char * what () const throw ();
 		};
 };
+#endif 

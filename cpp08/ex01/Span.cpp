@@ -17,7 +17,6 @@ Span& Span::operator=(Span const & src){
     return *this;
 }
 
-        //member function
 void    Span::addNumber(int num){
     if (this->_myvector.size() >= this->_maxSize)
         throw fullSpanException();
@@ -25,12 +24,7 @@ void    Span::addNumber(int num){
 }
 
 void    Span::addNumbers(std::vector<int> newElements){
-    for (std::vector<int>::iterator it = newElements.begin(); it!= newElements.end(); ++it)
-    {
-        if (this->_myvector.size() >= this->_maxSize)
-            throw fullSpanException();
-        this->_myvector.push_back(*it);
-    }
+    _myvector.insert(_myvector.end(), newElements.begin(), newElements.end());
 }
 
 void    Span::addNumRange(int from, int to, int step){
