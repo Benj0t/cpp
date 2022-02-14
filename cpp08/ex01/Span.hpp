@@ -13,6 +13,7 @@ class Span{
 
         void    isSpan();
     public:
+        Span();
         Span(unsigned int N);
         Span(Span const & src);
         ~Span();
@@ -20,10 +21,9 @@ class Span{
         Span& operator=(Span const & src);
 
         void    addNumber(int num);
-        void    addNumbers(std::vector<int>  newElements);
-        void    addNumRange(int from, int to, int step);
-        int     shortestSpan();
-        int     longestSpan();
+        void    addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+        unsigned int     shortestSpan();
+        unsigned int     longestSpan();
         void    print_vect();
 
         class fullSpanException : public std::exception{

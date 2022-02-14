@@ -23,22 +23,20 @@ void    Span::addNumber(int num){
     this->_myvector.push_back(num);
 }
 
-void    Span::addNumbers(std::vector<int> newElements){
-    _myvector.insert(_myvector.end(), newElements.begin(), newElements.end());
+void    Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    while (begin != end)
+    {
+        addNumber(*begin);
+        begin++;
+    }
 }
 
-void    Span::addNumRange(int from, int to, int step){
-    if (from > to || step <= 0)
-        throw std::overflow_error("Invalid step or range order exception");
-    for (int i = from; i < to; i+= step)
-        this->addNumber(i); 
-}
-      
-int     Span::shortestSpan(){
+unsigned int     Span::shortestSpan(){
     isSpan();
     std::sort(this->_myvector.begin(), this->_myvector.end());
-    int minDist = this->longestSpan();
-    int tmpDist;
+    unsigned int minDist = this->longestSpan();
+    unsigned int tmpDist;
     std::vector<int>::iterator it;
     for (it = this->_myvector.begin(); it != this->_myvector.end() - 1; it++)
     {
@@ -49,10 +47,10 @@ int     Span::shortestSpan(){
     return minDist;
 }
 
-int     Span::longestSpan(){
+unsigned int     Span::longestSpan(){
     isSpan();
-    int tmpMax = *std::max_element(this->_myvector.begin(), this->_myvector.end());
-    int tmpMin = *std::min_element(this->_myvector.begin(), this->_myvector.end());
+    unsigned int tmpMax = *std::max_element(this->_myvector.begin(), this->_myvector.end());
+    unsigned int tmpMin = *std::min_element(this->_myvector.begin(), this->_myvector.end());
     return tmpMax - tmpMin;
 }
 
